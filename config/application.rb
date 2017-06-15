@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Pincredible
   class Application < Rails::Application
-    config.generator do |g|
+    config.generators do |g|
       g.helper false
       g.assets false
       g.test_framework false
