@@ -6,13 +6,12 @@
 | nickname | string | null: false |
 | email | string | null: false, index: true, unique: true |
 | pass | string | null: false |
-| about | varchar(255) |  |
+| about | text |  |
 | avatar | string |  |
 
 #### Association
 - has_many :boards
 - has_many :pins
-- has_many :boards_pins
 
 ## boards table
 | column | type | option |
@@ -27,14 +26,14 @@
 ## pins table
 | column | type | option |
 | ---- | ---- | ---- |
-| title | text | null: false |
+| title | string | null: false |
 | image | string | null :false |
 | user_id | integer | null: false |
 | description | text |  |
 
 #### Association
 - belongs_to :user
-- bhas_many :boards, through :boards_pins
+- has_many :boards, through :boards_pins
 
 ## boards_pins table
 | column | type | option |
