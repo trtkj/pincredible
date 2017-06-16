@@ -1,24 +1,47 @@
-# README
+# Database design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
+| column | type | option |
+| ---- | ---- | ---- |
+| nickname | string | null: false |
+| email | string | null: false, index: true, unique: true |
+| pass | string | null: false |
+| about | varchar(255) |  |
+| avatar | string |  |
 
-Things you may want to cover:
+#### Association
+- has_many :boards
+- has_many :pins
+- has_many :boards_pins
 
-* Ruby version
+## boards table
+| column | type | option |
+| ---- | ---- | ---- |
+| title | string | null: false |
+| description | text |  |
 
-* System dependencies
+#### Association
+- has_many :pins, through :boards_pins
+- belongs_to :user
 
-* Configuration
+## pins table
+| column | type | option |
+| ---- | ---- | ---- |
+| title | text | null: false |
+| image | string | null :false |
+| user_id | integer | null: false |
+| description | text |  |
 
-* Database creation
+#### Association
+- belongs_to :user
+- bhas_many :boards, through :boards_pins
 
-* Database initialization
+## boards_pins table
+| column | type | option |
+| ---- | ---- | ---- |
+| board_id | integer | null: false |
+| pin_id | integer | null: false |
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Association
+- belongs_to :board
+- belongs_to :pin
