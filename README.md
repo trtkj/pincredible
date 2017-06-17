@@ -1,5 +1,6 @@
 # Database design
 
+edit
 ## users table
 | column | type | option |
 | ---- | ---- | ---- |
