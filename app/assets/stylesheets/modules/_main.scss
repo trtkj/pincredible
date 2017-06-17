@@ -1,0 +1,141 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #999999;
+}
+
+.container {
+  flex: 1;
+  background-color: white;
+  overflow: auto;
+  padding: 14px;
+  .pins {
+    margin: 0 auto;
+    background-color: white;
+    &__item {
+      width: 256px;
+      margin: 4px 2px;
+      background-color: white;
+      word-break: break-word;
+      border-radius: 6px;
+      .pins__item__wrapper {
+        width: 236px;
+        margin: 10px 10px 0;
+        position: relative;
+        .item-link {
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          &:hover {
+            cursor: zoom-in;
+          }
+          &:link, &:visited, &:hover, &:active {
+            color: black;
+            text-decoration: none;
+          }
+        }
+        .item-img {
+          width: 236px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+        }
+        .item-info {
+          margin: 0 8px 6px;
+          &__title {
+            width: 180px;
+            font-size: 14px;
+            font-weight: bold;
+            float: left;
+          }
+          &__pin {
+            float: right;
+            font-size: 8.6px;
+          }
+        }
+        .item-description {
+          font-size: 12px;
+          margin: 0 8px 6px;
+          clear: both;
+        }
+      }
+      &__user {
+        height: 28px;
+        margin: 0 8px 6px;
+        border-radius: 4px;
+        position: relative;
+        padding: 6px 8px;
+        .item-user--link {
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          &:hover {
+            cursor: pointer;
+          }
+          &:link, &:visited, &:hover, &:active {
+            color: black;
+            text-decoration: none;
+          }
+        }
+        .item-user--left {
+          float: left;
+          margin-right: 8px;
+          .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+          }
+        }
+        .item-user--right {
+          width: 186px;
+          font-size: 8.6px;
+          line-height: 14px;
+          .user-name {
+            font-weight: bold;
+          }
+          .user-board {
+          }
+        }
+      }
+    }
+  }
+  .post {
+    width: 84px;
+    position: fixed;
+    right: 14px;
+    bottom: 34px;
+    &__button {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: white;
+      text-align: center;
+      box-shadow: 0 2px 0 0.5px #EFEFEF;
+      &--link {
+        width: 100%;
+        height: 40px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 24px;
+        line-height: 40px;
+        &:hover {
+          cursor: pointer;
+        }
+        &:link, &:visited, &:hover, &:active {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
