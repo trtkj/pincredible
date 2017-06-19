@@ -17,6 +17,7 @@
 | column | type | option |
 | ---- | ---- | ---- |
 | title | string | null: false |
+| user_id | integer | null: false |
 | description | text |  |
 
 #### Association
