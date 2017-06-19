@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170619102150) do
 
   create_table "pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                     null: false
-    t.string   "image",                     null: false
+    t.string   "image"
     t.integer  "user_id",                   null: false
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
