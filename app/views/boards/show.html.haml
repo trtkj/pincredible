@@ -1,0 +1,19 @@
+= render partial: "/shared/header"
+.container
+  .board-header
+    .board-header__edit
+      .edit__menu
+        = link_to "", "/#1", class: "menu-link"
+        = fa_icon("pencil", class: "fa-lg menu-icon")
+      .edit__menu
+        = link_to "", "/#1", class: "menu-link"
+        = fa_icon("arrows", class: "fa-lg menu-icon")
+    .board-header__title
+      %span.title-text What I Love
+    .board-header__info
+      .board-pins
+        %span.board-pins__number 4 pins
+      .board-user
+        = image_tag "obasan.png", class: "user-avatar"
+  = render partial: "/shared/pins"
+  = render partial: "/shared/post"
