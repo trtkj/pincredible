@@ -18,9 +18,7 @@
           = f.password_field :password, autocomplete: "off", placeholder: "パスワードを作成"
         .field
           = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードを再入力"
-        = f.label "", :submit do
-          %span.submit-button 続行
-          = f.submit "Sign up", style: "display:none"
+        = f.submit "続行", class: "submit-button"
       .notice アカウントを作成しても、Pincredibleの利用規約とプライバシーポリシーに同意するものとみなしません。
   .footer
     %ul.footer__link
