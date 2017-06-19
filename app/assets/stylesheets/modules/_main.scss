@@ -19,7 +19,7 @@ body {
       background-color: white;
       word-break: break-word;
       border-radius: 6px;
-      .pins__item__wrapper {
+      &__wrapper {
         width: 236px;
         margin: 10px 10px 0;
         position: relative;
@@ -100,6 +100,53 @@ body {
             font-weight: bold;
           }
           .user-board {
+          }
+        }
+      }
+    }
+  }
+  .boards {
+    margin: 0 auto;
+    background-color: white;
+    &__item {
+      width: 325px;
+      margin: 4px 2px;
+      background-color: white;
+      word-break: break-word;
+      border-radius: 6px;
+      &__wrapper {
+        width: 305px;
+        margin: 10px 10px 0;
+        position: relative;
+        .item-link {
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          &:hover {
+            cursor: zoom-in;
+          }
+          &:link, &:visited, &:hover, &:active {
+            color: black;
+            text-decoration: none;
+          }
+        }
+        .item-img {
+          width: 305px;
+          height: 200px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+        }
+        .item-info {
+          margin: 0 8px 6px;
+          &__title {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          &__pin {
+            font-size: 8.6px;
           }
         }
       }
