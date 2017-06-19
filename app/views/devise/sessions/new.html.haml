@@ -1,0 +1,24 @@
+.container-signup
+  .button
+    = link_to "", new_registration_path(resource_name), class: "link"
+    %span.link-text 登録
+  .form
+    .logo-area
+      = image_tag "logo.png", class: "logo", size: "44x44", alt: "logo"
+    .greeting-area
+      %h1.greeting 他のピンを見るにはログインしてください
+    .form-area
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, placeholder: "メール"
+        .field
+          = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
+        = f.label "", :submit do
+          %span.submit-button ログイン
+          = f.submit "Log in", style: "display:none"
+      .notice パスワードをお忘れの場合は再度アカウントを作成してください。
+  .footer
+    %ul.footer__link
+      %li.footer__link__item Pincredible について
+      %li.footer__link__item 利用規約
+      %li.footer__link__item ヘルプ

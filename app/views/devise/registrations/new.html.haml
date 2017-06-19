@@ -1,0 +1,29 @@
+.container-signup
+  .button
+    = link_to "", new_session_path(resource_name), class: "link"
+    %span.link-text ログイン
+  .form
+    .logo-area
+      = image_tag "logo.png", class: "logo", size: "44x44", alt: "logo"
+    .greeting-area
+      %h1.greeting Pincredible にようこそ！
+    .form-area
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          = f.text_field :nickname, autofocus: true, placeholder: "ニックネーム"
+        .field
+          = f.email_field :email, placeholder: "メール"
+        .field
+          = f.password_field :password, autocomplete: "off", placeholder: "パスワードを作成"
+        .field
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードを再入力"
+        = f.label "", :submit do
+          %span.submit-button 続行
+          = f.submit "Sign up", style: "display:none"
+      .notice アカウントを作成しても、Pincredibleの利用規約とプライバシーポリシーに同意するものとみなしません。
+  .footer
+    %ul.footer__link
+      %li.footer__link__item Pincredible について
+      %li.footer__link__item 利用規約
+      %li.footer__link__item ヘルプ
