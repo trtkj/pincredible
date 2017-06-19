@@ -2,13 +2,13 @@
   .board-header {
     max-width: 800px;
     margin: 0 auto;
-    &__edit {
+    &__menu {
       margin: 0 28px 15px;
       height: 48px;
       display: flex;
       // position: fixed;
       // background-color: rgba(255, 255, 255, 0.95);
-      .edit__menu {
+      .menu-button {
         width: 48px;
         height: 48px;
         margin-right: 8px;
@@ -30,35 +30,44 @@
           line-height: 48px;
         }
       }
-
-    }
-    &__title {
-      height: 42px;
-      margin: 0 28px 18px;
-      // clear: both;
-      .title-text {
-        font-size: 31px;
-        line-height: 42px;
-        font-weight: bold;
-      }
     }
     &__info {
-      margin: 0 28px;
+      margin: 0 28px 18px;
       display: flex;
-      .board-pins {
+      &--left {
         flex: 1;
-        &__number{
+        min-height: 168px;
+        .title-text {
+          font-size: 31px;
+          line-height: 42px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .board-pins {
           font-size: 10px;
-          // float: left;
+          margin-bottom: 5px;
+        }
+        .board-about {
+          font-size: 10px;
         }
       }
-      .board-user {
-        width: 60px;
-        .user-avatar {
+      &--right {
+        position: relative;
+        .avatar--small {
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          // float: right;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+        .avatar--large {
+          width: 168px;
+          height: 168px;
+          border-radius: 50%;
+          position: absolute;
+          right: 0;
+          bottom: 0;
         }
       }
     }

@@ -4,16 +4,16 @@
     .board-header__menu
       .menu-button
         = link_to "", "/#1", class: "menu-link"
-        = fa_icon("pencil", class: "fa-lg menu-icon")
+        = fa_icon("cog", class: "fa-lg menu-icon")
       .menu-button
         = link_to "", "/#1", class: "menu-link"
-        = fa_icon("arrows", class: "fa-lg menu-icon")
+        = fa_icon("sign-out", class: "fa-lg menu-icon")
     .board-header__info
       .board-header__info--left
-        %h2.title-text What I Love
-        %h3.board-pins 4 pins
+        %h2.title-text Koji Tsuruta
         %p.board-about What I am What I love
       .board-header__info--right
-        = image_tag "obasan.png", class: "avatar--small"
+        = image_tag "obasan.png", class: "avatar--large"
+  = render partial: "/shared/boards"
   = render partial: "/shared/pins"
   = render partial: "/shared/post"
