@@ -1,0 +1,28 @@
+= render partial: "/shared/header"
+.container
+  .user-form
+    = form_for(current_user) do |f|
+      .field
+        .title プロフィール
+      .field
+        .field-label
+          = f.label :nickname, "ニックネーム"
+        .field-input
+          = f.text_field :nickname
+      .field
+        .field-label
+          = f.label :image, "写真"
+        .field-file
+          = f.file_field :image
+      .field
+        .field-label
+          = f.label :email, "Email"
+        .field-input
+          = f.email_field :email
+      .field
+        .field-label
+          = f.label :about, "自己紹介"
+        .field-input
+          = f.text_area :about
+      .actions
+        = f.submit "設定を保存", class: 'btn'

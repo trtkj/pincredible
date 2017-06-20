@@ -185,4 +185,58 @@ body {
       }
     }
   }
+  .user-form {
+    width: 686px;
+    margin: 0 auto;
+    padding-right: 24px;
+    padding-left: 24px;
+    background-color: white;
+    .field {
+      margin-bottom: 24px;
+      &-label {
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 6px;
+        
+      }
+      &-input {
+        // margin: 0 auto 7px;
+        border-radius: 4px;
+        background-color: #EFEFEF;
+        width: 100%;
+        input {
+          width: 100%;
+          height: 17px;
+          padding: 10px;
+          font-size: 14px;
+          background-color: transparent;
+          border: 0;
+          outline: none;
+        }
+        textarea {
+          width: 652px;
+          rows: 3;
+          padding: 16px;
+          font-size: 14px;
+          background-color: transparent;
+          border: 0;
+          outline: none;
+        }
+      }
+    }
+    .actions {
+      .btn {
+        @include textBtn();
+        display: block;
+        width: 100px;
+        background-color: $accent-color;
+        color: white;
+        border: none;
+        float: right;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
