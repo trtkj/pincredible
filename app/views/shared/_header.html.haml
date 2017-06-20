@@ -9,6 +9,7 @@
           = fa_icon("search", class: "fa-lg")
         .form__box--right
           %input{type: "text", placeholder: "検索", class: "search-input"}
-  .header__menu
-    = link_to "", "/#1", class: "menu-link"
-    = fa_icon("user", class: "fa-2x menu-icon")
+  - if user_signed_in?
+    .header__menu
+      = link_to "", "/users/#{current_user.id}", class: "menu-link"
+      = fa_icon("user", class: "fa-2x menu-icon")
