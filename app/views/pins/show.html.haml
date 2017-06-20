@@ -1,0 +1,35 @@
+.container-pin
+  .close-button
+    = link_to "", "/#1", class: "menu-link"
+    = fa_icon("times", class: "fa-2x menu-icon")
+  .pin
+    .pin__menu
+      .menu-button
+        = link_to "", "/#1", class: "menu-link"
+        = fa_icon("pencil", class: "fa-lg menu-icon")
+      .menu-button
+        = link_to "", "/#1", class: "menu-link"
+        = fa_icon("arrows", class: "fa-lg menu-icon")
+      .menu--right
+        .button
+          = link_to "", "/#", class: "link"
+          %span.save-text 保存
+    .pin__title
+      %h2.pin__title__text ほにゃほにゃ
+    .pin__image
+      = image_tag "chari.jpg", class: "item-img"
+    .pin__user
+      .pin-user--left
+        = image_tag "obasan.png", class: "user-avatar"
+      .pin-user--right
+        .user-label 保存したユーザー：
+        .user-name Koji Tsuruta
+    .pin__description
+      %p.pin__description__text ｆはおうえｋｆｒじょふぁんｂうぃうえｈふぁ
+    .pin__date
+    .pin__board
+      .pin-board--left
+        = image_tag "obasan.png", class: "user-avatar"
+      .pin-board--right
+        .board-event Aさんが「B」に保存しました
+
