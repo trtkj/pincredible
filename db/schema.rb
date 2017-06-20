@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620082024) do
+ActiveRecord::Schema.define(version: 20170620121320) do
+
+  create_table "board_pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "board_id",   null: false
+    t.integer  "pin_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_pins_on_board_id", using: :btree
+    t.index ["pin_id"], name: "index_board_pins_on_pin_id", using: :btree
+  end
 
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                     null: false
