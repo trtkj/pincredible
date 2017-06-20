@@ -1,6 +1,6 @@
 %header.header
   .header__logo
-    = link_to "", "/#0", class: "logo-link"
+    = link_to "", "/", class: "logo-link"
     = image_tag "logo.png", class: "logo", size: "28x28", alt: "logo"
   .header__search
     %form
@@ -9,7 +9,12 @@
           = fa_icon("search", class: "fa-lg")
         .form__box--right
           %input{type: "text", placeholder: "検索", class: "search-input"}
-  - if user_signed_in?
-    .header__menu
-      = link_to "", "/users/#{current_user.id}", class: "menu-link"
-      = fa_icon("user", class: "fa-2x menu-icon")
+  .header__menu
+    - if user_signed_in?
+      .icon-button
+        = link_to "", "/users/#{current_user.id}", class: "menu-link"
+        = fa_icon("user", class: "fa-2x menu-icon")
+    - else
+      .text-button
+        = link_to "", new_user_registration_path, class: "link"
+        %span.link-text 登録/ログイン
