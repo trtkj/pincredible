@@ -2,16 +2,18 @@
 .container
   .board-header
     .board-header__menu
-      .menu-button
-        = link_to "", "/#1", class: "menu-link"
-        = fa_icon("cog", class: "fa-lg menu-icon")
-      .menu-button
-        = link_to "", "/#1", class: "menu-link"
-        = fa_icon("sign-out", class: "fa-lg menu-icon")
+      -if current_user == @user
+        .menu-button
+          = link_to "", edit_user_path, class: "menu-link"
+          = fa_icon("cog", class: "fa-lg menu-icon")
+        .menu-button
+          = link_to "", destroy_user_session_path, method: :delete, class: "menu-link"
+          = fa_icon("sign-out", class: "fa-lg menu-icon")
     .board-header__info
       .board-header__info--left
-        %h2.title-text Koji Tsuruta
-        %p.board-about What I am What I love
+        %h2.title-text #{@user.nickname}
+        - if @user.about
+          = simple_format(@user.about, class: "board-about")
       .board-header__info--right
         = image_tag "obasan.png", class: "avatar--large"
   = render partial: "/shared/boards"
