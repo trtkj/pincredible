@@ -1,8 +1,62 @@
 .boards
+  - if @user == current_user
+    .boards__item
+      .boards__item__wrapper
+        .item-object
+          = link_to "", "/#", class: "item-link"
+          .item-img
+            = fa_icon("plus-circle", class: "fa-3x")
+        .item-info
+          .item-info__text 新規ボードを作成
   .boards__item
     .boards__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "chari.jpg", class: "item-img"
+      .item-object
+        = link_to "", "/#", class: "item-link"
+        = image_tag "chari.jpg", class: "item-img"
       .item-info
-        .item-info__title titletitletitle
-        .item-info__pin 16 ピン
+        .item-info--left
+          .item-title titletitletitle
+          .item-pin 16 ピン
+        .item-info--right
+          .item-edit
+            = link_to "", "/#2", class: "link"
+            %span.link-text 編集
+  .boards__item
+    .boards__item__wrapper
+      .item-object
+        = link_to "", "/#", class: "item-link"
+        = image_tag "chari.jpg", class: "item-img"
+      .item-info
+        .item-info--left
+          .item-title titletitletitle
+          .item-pin 16 ピン
+        .item-info--right
+          .item-edit
+            = link_to "", "/#2", class: "link"
+            %span.link-text 編集
+  .boards__item
+    .boards__item__wrapper
+      .item-object
+        = link_to "", "/#", class: "item-link"
+        = image_tag "chari.jpg", class: "item-img"
+      .item-info
+        .item-info--left
+          .item-title titletitletitle
+          .item-pin 16 ピン
+        .item-info--right
+          .item-edit
+            = link_to "", "/#2", class: "link"
+            %span.link-text 編集
+  .boards__item
+    .boards__item__wrapper
+      .item-object
+        = link_to "", "/#", class: "item-link"
+        = image_tag "chari.jpg", class: "item-img"
+      .item-info
+        .item-info--left
+          .item-title titletitletitle
+          .item-pin 16 ピン
+        .item-info--right
+          .item-edit
+            = link_to "", "/#2", class: "link"
+            %span.link-text 編集

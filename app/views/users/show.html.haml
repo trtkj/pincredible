@@ -16,6 +16,9 @@
           = simple_format(@user.about, class: "board-about")
       .board-header__info--right
         = image_tag "obasan.png", class: "avatar--large"
+  .show-trigger
+    .show-trigger__option.select#boardsOn ボード
+    .show-trigger__option#pinsOn ピン
   = render partial: "/shared/boards"
-  = render partial: "/shared/pins"
+  = render partial: "/shared/pins", locals: {display: "hidden"}
   = render partial: "/shared/post"

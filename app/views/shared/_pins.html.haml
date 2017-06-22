@@ -1,4 +1,12 @@
-.pins
+= content_tag(:div, class: "pins #{display}") do
+  - if @user == current_user
+    .pins__item
+      .pins__item__wrapper
+        = link_to "", "/#", class: "item-link"
+        .item-bg
+          = fa_icon("plus-circle", class: "fa-3x")
+        .item-info
+          .item-info__text ピンを保存する
   .pins__item
     .pins__item__wrapper
       = link_to "", "/#", class: "item-link"

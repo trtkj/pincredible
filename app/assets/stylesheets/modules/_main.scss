@@ -8,8 +8,14 @@ body {
 .container {
   flex: 1;
   background-color: white;
-  overflow: auto;
+  overflow-y: scroll;
   padding: 14px;
+  .hidden {
+    display: none;
+  }
+  .shown {
+    display: block;
+  }
   .pins {
     margin: 0 auto;
     background-color: white;
@@ -23,6 +29,19 @@ body {
         width: 236px;
         margin: 10px 10px 0;
         position: relative;
+        .item-bg {
+          width: 100%;
+          height: 236px;
+          background-color: $mono-color-light;
+          border-radius: 8px;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          .fa-plus-circle {
+            color: $accent-color;
+            margin: 0 auto;
+          }
+        }
         .item-link {
           width: 100%;
           height: 100%;
@@ -105,6 +124,7 @@ body {
       }
     }
   }
+
   .boards {
     margin: 0 auto;
     background-color: white;
@@ -118,71 +138,95 @@ body {
         width: 305px;
         margin: 10px 10px 0;
         position: relative;
-        .item-link {
-          width: 100%;
-          height: 100%;
-          display: block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          &:hover {
-            cursor: zoom-in;
-          }
-          &:link, &:visited, &:hover, &:active {
-            color: black;
-            text-decoration: none;
-          }
-        }
-        .item-img {
-          width: 305px;
-          height: 200px;
+        .item-object {
+          background-color: $mono-color-light;
           border-radius: 8px;
           margin-bottom: 8px;
+          .item-link {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            // &:hover {
+            //   cursor: zoom-in;
+            // }
+            &:link, &:visited, &:hover, &:active {
+              color: black;
+              text-decoration: none;
+            }
+          }
+          .item-img {
+            display: block;
+            width: 305px;
+            height: 200px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            // text-align: center;
+            // border-top: 1px solid $mono-color-light;
+            // &:hover {
+            //   background-color: $mono-color-light;
+            //   border-radius: 0 0 8px;
+            // }
+            // line-height: 64px;
+            .fa-plus-circle {
+              color: $accent-color;
+              margin: 0 auto;
+            }
+          }
         }
         .item-info {
-          margin: 0 8px 6px;
-          &__title {
-            font-size: 14px;
-            font-weight: bold;
+          margin: 0 0 6px 8px;
+          display: flex;
+          &--left {
+            flex: 1;
+            .item-title {
+              font-size: 14px;
+              font-weight: bold;
+              line-height: 21px;
+            }
+            .item-pin {
+              font-size: 8.6px;
+              line-height: 15px;
+            }
           }
-          &__pin {
-            font-size: 8.6px;
+          &--right {
+            .item-edit {
+              @include textBtn();
+              background-color: $mono-color-light;
+              z-index: 2;
+              font-weight: normal;
+              font-size: 12px;
+              &:hover {
+                background-color: $mono-color-middle;
+              }
+            }
+          }
+          &__text {
+            font-size: 18px;
+            line-height: 36px;
           }
         }
       }
     }
   }
   .post {
-    width: 84px;
+    width: 64px;
     position: fixed;
     right: 14px;
     bottom: 34px;
     &__button {
-      position: relative;
       width: 40px;
       height: 40px;
-      margin: 0 auto;
       border-radius: 50%;
       background-color: white;
       text-align: center;
       box-shadow: 0 2px 0 0.5px #EFEFEF;
-      &--link {
-        width: 100%;
-        height: 40px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 24px;
-        line-height: 40px;
-        &:hover {
-          cursor: pointer;
-        }
-        &:link, &:visited, &:hover, &:active {
-          color: black;
-          text-decoration: none;
-        }
-      }
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
     }
   }
   .user-form {
@@ -197,10 +241,8 @@ body {
         font-size: 12px;
         line-height: 16px;
         margin-bottom: 6px;
-        
       }
       &-input {
-        // margin: 0 auto 7px;
         border-radius: 4px;
         background-color: #EFEFEF;
         width: 100%;
