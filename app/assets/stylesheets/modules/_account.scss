@@ -32,21 +32,21 @@
     .form-area {
       width: 268px;
       margin: 0 auto;
-      .field {
-        margin: 0 auto 7px;
-        border-radius: 4px;
-        background-color: #EFEFEF;
-        width: 100%;
-        input {
-          width: 248px;
-          height: 17px;
-          padding: 10px;
-          font-size: 14px;
-          background-color: transparent;
-          border: 0;
-          outline: none;
-        }
-      }
+      // .field {
+      //   margin: 0 auto 7px;
+      //   border-radius: 4px;
+      //   background-color: #EFEFEF;
+      //   width: 100%;
+      //   input {
+      //     width: 248px;
+      //     height: 17px;
+      //     padding: 10px;
+      //     font-size: 14px;
+      //     background-color: transparent;
+      //     border: 0;
+      //     outline: none;
+      //   }
+      // }
       .submit-button {
         @include textBtn();
         display: block;

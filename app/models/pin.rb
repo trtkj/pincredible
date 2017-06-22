@@ -1,5 +1,5 @@
 class Pin < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
   has_many :boards, through: :board_pins
   validates :title, presence: true
   validates :image, presence: true

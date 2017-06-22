@@ -2,18 +2,19 @@
 .container
   .board-header
     .board-header__menu
-      .menu-button
-        = link_to "", "/#1", class: "menu-link"
-        = fa_icon("pencil", class: "fa-lg menu-icon")
-      .menu-button
-        = link_to "", "/#1", class: "menu-link"
-        = fa_icon("arrows", class: "fa-lg menu-icon")
+      -if user_signed_in? && current_user.id == @board.user_id
+        .menu-button.modal-open{data: {target: "modal-boardEdit"}}
+          = fa_icon("pencil", class: "fa-lg menu-icon")
+        .menu-button
+          = link_to "", "/#1", class: "menu-link"
+          = fa_icon("arrows", class: "fa-lg menu-icon")
     .board-header__info
       .board-header__info--left
-        %h2.title-text What I Love
+        %h2.title-text #{@board.title}
         %h3.board-pins 4 pins
-        %p.board-about What I am What I love
+        %p.board-about #{@board.description}
       .board-header__info--right
         = image_tag "obasan.png", class: "avatar--small"
   = render partial: "/shared/pins"
   = render partial: "/shared/post"
+  = render partial: "/shared/modal-boardEdit"

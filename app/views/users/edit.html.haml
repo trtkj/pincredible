@@ -2,27 +2,23 @@
 .container
   .user-form
     = form_for(current_user) do |f|
+      .title
+        プロフィールの編集
       .field
-        .title プロフィール
-      .field
-        .field-label
-          = f.label :nickname, "ニックネーム"
-        .field-input
-          = f.text_field :nickname
-      .field
-        .field-label
-          = f.label :image, "写真"
-        .field-file
-          = f.file_field :image
-      .field
-        .field-label
-          = f.label :email, "Email"
-        .field-input
-          = f.email_field :email
-      .field
-        .field-label
-          = f.label :about, "自己紹介"
-        .field-input
-          = f.text_area :about
+        = f.label :nickname, "ニックネーム", class: "field-label"
+        = f.text_field :nickname, class: "field-input"
+        = f.label "写真", class: "field-label"
+        .field-avatar
+          .avatar
+            = image_tag "obasan.png", class: "avatar-image"
+          .change
+            = f.label :image do
+              = f.file_field :image, class: "hidden"
+              .file-button
+                %span.link-text 写真を変更
+        = f.label :email, "Email", class: "field-label"
+        = f.email_field :email, class: "field-input"
+        = f.label :about, "自己紹介", class: "field-label"
+        = f.text_area :about, class: "field-input"
       .actions
         = f.submit "設定を保存", class: 'btn'

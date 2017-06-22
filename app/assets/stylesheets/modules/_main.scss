@@ -134,6 +134,9 @@ body {
       background-color: white;
       word-break: break-word;
       border-radius: 6px;
+      &:hover {
+        cursor: pointer;
+      }
       &__wrapper {
         width: 305px;
         margin: 10px 10px 0;
@@ -230,40 +233,25 @@ body {
     }
   }
   .user-form {
-    width: 686px;
+    width: 600px;
     margin: 0 auto;
     padding-right: 24px;
     padding-left: 24px;
     background-color: white;
-    .field {
-      margin-bottom: 24px;
-      &-label {
-        font-size: 12px;
-        line-height: 16px;
-        margin-bottom: 6px;
-      }
-      &-input {
-        border-radius: 4px;
-        background-color: #EFEFEF;
-        width: 100%;
-        input {
-          width: 100%;
-          height: 17px;
-          padding: 10px;
-          font-size: 14px;
-          background-color: transparent;
-          border: 0;
-          outline: none;
-        }
-        textarea {
-          width: 652px;
-          rows: 3;
-          padding: 16px;
-          font-size: 14px;
-          background-color: transparent;
-          border: 0;
-          outline: none;
-        }
+    .field-avatar {
+      display: flex;
+      align-items: center;
+    }
+    .avatar-image {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    .file-button {
+      @include textBtn();
+      &:hover {
+        background-color: $mono-color-middle
       }
     }
     .actions {

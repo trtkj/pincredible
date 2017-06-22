@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
   def index
+    @board = Board.new
   end
 
   def create

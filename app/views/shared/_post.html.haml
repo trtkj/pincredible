@@ -5,34 +5,23 @@
   = form_for @newPin do |f|
     .modal__bg
     .modal__window#upload1
-      .modal__window__header
-        .modal-title ピンを作成
-        .button
-          = fa_icon("times", class: "fa-lg")
-      .modal__window__container
-        .content
-          = f.label :image do
-            = f.file_field :image, class: "hidden"
-            .file-button 写真を選択
+      .modal__window--right
+        .modal__window__header
+          .modal-title ピンを作成
+          .button
+            = fa_icon("times", class: "fa-lg")
+        .modal__window__container
+          .content
+            = f.label :image do
+              = f.file_field :image, class: "hidden"
+              .file-button 写真を選択
     .modal__window#upload2
-      .modal__wrapper
-        .modal__wrapper--left
-          .modal-image
-        .modal__wrapper--right
-          .modal__window__header
-            .modal-title ボードを選択
-            .button
-              = fa_icon("times", class: "fa-lg")
-          .modal__window__container
-            .content hoge
-          .modal__window__footer.modal-open{data: {target: "modal-boardSelect"}}
-            = fa_icon("plus-circle", class: "fa-2x")
-            %span.save-text 新規ボードを作成
-.modal#modal-boardSelect
-  .modal__bg
-  .modal__window
-    .modal__wrapper
-      .modal__wrapper--left aa
+      .modal__wrapper--left
+        .modal-image
+        = f.label :title, "ピンのタイトル", class: "field-label"
+        = f.text_field :title, class: "field-input"
+        = f.label :description, "ピンの説明", class: "field-label"
+        = f.text_area :description, class: "field-input"
       .modal__wrapper--right
         .modal__window__header
           .modal-title ボードを選択
@@ -40,6 +29,4 @@
             = fa_icon("times", class: "fa-lg")
         .modal__window__container
           .content hoge
-        .modal__window__footer.modal-open{data: {target: "modal-boardSelect"}}
-          = fa_icon("plus-circle", class: "fa-2x")
-          %span.save-text 新規ボードを作成
+
