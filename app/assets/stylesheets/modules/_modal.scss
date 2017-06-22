@@ -1,0 +1,120 @@
+.modal {
+  // visibility: hidden;
+  display: none;
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 5;
+  &__bg {
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+  }
+  #upload2{
+    display: none;
+  }
+  &__window {
+    width: 600px;
+    // max-height: 600px;
+    border-radius: 8px;
+    background-color: white;
+    margin: auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    // padding: 20px 10px;
+    &__header {
+      height: 32px;
+      padding: 25px 25px 15px;
+      display: flex;
+      border-bottom: 1px solid $mono-color-light;
+      .modal-title {
+        flex: 1;
+        font-size: 20px;
+      }
+      .button {
+        width: 18px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    &__container {
+      flex: 1;
+      overflow: auto;
+      .content {
+        margin: 15px 25px 25px;
+        .file-button {
+          @include textBtn();
+          background-color: $accent-color;
+          width: 200px;
+          color: white;
+          margin: 0 auto;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    &__footer {
+      height: 64px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      border-top: 1px solid $mono-color-light;
+      &:hover {
+        background-color: $mono-color-light;
+        border-radius: 0 0 8px;
+      }
+      // line-height: 64px;
+      .fa-plus-circle {
+        color: $accent-color;
+        margin-left: 23px;
+        margin-right: 12px;
+      }
+    }
+  }
+  &__wrapper{
+    display: flex;
+    &--left {
+      flex: 1;
+      // height: 100%;
+      border-right: 1px solid $mono-color-light;
+      .modal-image{
+        // width: 100%;
+        margin: 32px 0px;
+        // padding: 0;
+        // text-align: center;
+        .preview {
+          // margin: auto;
+          margin: auto;
+          display: block;
+          width: 216px;
+          height: auto;
+          border-radius: 8px;
+        }
+      }
+    }
+    &--right {
+      flex: 1;
+      // height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
