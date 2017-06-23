@@ -5,12 +5,13 @@
       .modal__window--right
         .modal__window__header
           .modal-title ボードを作成
-          .button
+          .close-button
             = fa_icon("times", class: "fa-lg")
         .modal__window__container
-          = f.label :title, "ボードのタイトル", class: "field-label"
-          = f.text_field :title, class: "field-input"
-          = f.label :description, "ボードの説明", class: "field-label"
-          = f.text_area :description, class: "field-input"
+          .content
+            = f.label :title, "ボードのタイトル", class: "field-label"
+            = f.text_field :title, class: "field-input"
+            = f.label :description, "ボードの説明", class: "field-label"
+            = f.text_area :description, class: "field-input"
         .modal__window__footer
           = f.submit "Save", class: "submit-button"

@@ -30,7 +30,7 @@
     z-index: 15;
     display: flex;
     .modal-image{
-      margin: 32px 0px;
+      margin-bottom: 30px;
       .preview {
         margin: auto;
         display: block;
@@ -40,8 +40,10 @@
       }
     }
     &--left {
-      flex: 1;
+      // flex: 1;
+      width: 250px;
       border-right: 1px solid $mono-color-light;
+      padding: 25px;
     }
     &--right {
       flex: 1;
@@ -66,18 +68,48 @@
     &__container {
       flex: 1;
       overflow: auto;
-      width: 552px;
-      margin: 0 auto;
-      padding: 15px 24px;
+      // width: 552px;
+      // margin: 0 auto;
+      // padding: 15px 24px;
       background-color: white;
+      .align-center {
+        margin: 0 auto;
+      }
       .content {
-        margin: 15px 25px 25px;
+        padding: 15px 25px;
+        border-bottom: 1px solid $mono-color-light;
+      }
+      .content2 {
+        max-height: 500px;
+        // margin: 15px 0 25px;
+        .board-item {
+          display: flex;
+          align-items: center;
+          height: 42px;
+          padding: 10px;
+          border-bottom: 1px solid $mono-color-light;
+          .board-image {
+            width: 24px;
+          }
+          .board-title {
+            flex: 1;
+          }
+          .board-button {
+            @include textBtn();
+            background-color: $accent-color;
+            color: white;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
         .file-button {
           @include textBtn();
           background-color: $accent-color;
-          width: 200px;
+          max-width: 250px;
+          max-height: 450px;
           color: white;
-          margin: 0 auto;
+          margin: 20px auto;
           &:hover {
             cursor: pointer;
           }
@@ -85,12 +117,12 @@
       }
     }
     &__footer {
-      // height: 64px;
-      font-size: 16px;
-      font-weight: bold;
-      align-items: center;
-      padding: 25px 25px;
-      border-top: 1px solid $mono-color-light;
+      padding: 10px;
+      // font-size: 16px;
+      // font-weight: bold;
+      // align-items: center;
+      // padding: 25px 25px;
+      // border-top: 1px solid $mono-color-light;
       .fa-plus-circle {
         color: $accent-color;
         margin-left: 23px;

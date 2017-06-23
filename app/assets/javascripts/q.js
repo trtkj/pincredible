@@ -16,8 +16,24 @@ $(function(){
     $(".modal").hide();
     var modal = '#' + $(this).attr('data-target');
     $(modal).show();
-    $(".modal__bg, .button").click(function(){
+    $(".modal__bg, .close-button").click(function(){
+      var thisForm = $(this).parents("form")[0];
+      thisForm.reset();
+      // console.log("thisForm: " + thisForm);
+      // var thisFile = thisForm.find(".inputFileType");
+      // thisFile.replaceWith($('.inputFileType').clone(true));
+      // var a = $(".inputFileType");
+      // console.log("a: " + a);
+      // $("#pin_image").val("");
+      // $("form").each(function(){this.reset();});
+      // $("form").each(function(){
+      //   this.serializeArray().each(function(){
+      //     this.val("")
+      //   });
+      // });
       $(modal).hide();
+      $("#upload1").show();
+      $("#upload2").hide();
     });
   });
 
@@ -27,8 +43,8 @@ $(function(){
     reader.onload = function(e){
       var imgHtml = $('<img>').attr({src: e.target.result, class: "preview"});
       $("#upload1").hide();
-      $("#upload2").show();
-      console.log(imgHtml);
+      $("#upload2").show().css('display', 'flex');
+      $(".modal-image").empty();
       $(".modal-image").append(imgHtml);
     };
     reader.readAsDataURL(file);

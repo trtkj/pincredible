@@ -8,25 +8,33 @@
       .modal__window--right
         .modal__window__header
           .modal-title ピンを作成
-          .button
+          .close-button
             = fa_icon("times", class: "fa-lg")
-        .modal__window__container
-          .content
+        .modal__window__container.align-center
+          .content2
             = f.label :image do
               = f.file_field :image, class: "hidden"
               .file-button 写真を選択
+        .modal__window__footer
     .modal__window#upload2
-      .modal__wrapper--left
+      .modal__window--left
         .modal-image
         = f.label :title, "ピンのタイトル", class: "field-label"
         = f.text_field :title, class: "field-input"
         = f.label :description, "ピンの説明", class: "field-label"
         = f.text_area :description, class: "field-input"
-      .modal__wrapper--right
+      .modal__window--right
         .modal__window__header
           .modal-title ボードを選択
-          .button
+          .close-button
             = fa_icon("times", class: "fa-lg")
         .modal__window__container
-          .content hoge
+          .content2
+            - current_user.boards.each do |board|
+              .board-item
+                .board-image a
+                .board-title #{board.title}
+                .board-button
+                  %span 保存
+        .modal__window__footer
 

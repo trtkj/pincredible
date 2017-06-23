@@ -14,7 +14,7 @@
         %h3.board-pins 4 pins
         %p.board-about #{@board.description}
       .board-header__info--right
-        = image_tag "obasan.png", class: "avatar--small"
+        = image_tag "#{@board.user.avatar}", class: "avatar--small"
   = render partial: "/shared/pins"
   = render partial: "/shared/post"
   = render partial: "/shared/modal-boardEdit"
