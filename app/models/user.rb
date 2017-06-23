@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pins
   has_many :boards
+  mount_uploader :avatar, ImageUploader
 end
