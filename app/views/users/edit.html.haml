@@ -10,10 +10,10 @@
         = f.label "写真", class: "field-label"
         .field-avatar
           .avatar
-            = image_tag "obasan.png", class: "avatar-image"
+            = image_tag "#{current_user.avatar}", class: "avatar-image"
           .change
-            = f.label :image do
-              = f.file_field :image, class: "hidden"
+            = f.label :avatar do
+              = f.file_field :avatar, class: "hidden"
               .file-button
                 %span.link-text 写真を変更
         = f.label :email, "Email", class: "field-label"
