@@ -21,5 +21,6 @@
     .show-trigger__option#pinsOn ピン
   = render partial: "/shared/boards"
   = render partial: "/shared/pins", locals: {display: "hidden"}
-  = render partial: "/shared/post"
+  - if user_signed_in?
+    = render partial: "/shared/post"
   = render partial: "/shared/modal-boardNew"

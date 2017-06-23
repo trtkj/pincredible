@@ -16,5 +16,6 @@
       .board-header__info--right
         = image_tag "#{@board.user.avatar}", class: "avatar--small"
   = render partial: "/shared/pins"
-  = render partial: "/shared/post"
+  - if user_signed_in?
+    = render partial: "/shared/post"
   = render partial: "/shared/modal-boardEdit"
