@@ -1,5 +1,5 @@
-.modal#modal-boardEdit
-  = form_for @board do |f|
+.modal{id: "modal-boardEdit" + board.id.to_s}
+  = form_for board do |f|
     .modal__bg
     .modal__window
       .modal__window--right
@@ -14,4 +14,4 @@
             = f.label :description, "ボードの説明", class: "field-label"
             = f.text_area :description, class: "field-input"
         .modal__window__footer
-          = f.submit "Save", class: "submit-button"
+          = f.submit "Save", class: "submit-button right"

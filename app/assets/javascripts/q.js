@@ -43,7 +43,6 @@ $(document).on('turbolinks:load', function() {
   }
   setTiles();
 
-
   $(".modal-open").click(function(){
     $(".modal").hide();
     var modal = '#' + $(this).attr('data-target');

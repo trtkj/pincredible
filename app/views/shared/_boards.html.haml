@@ -2,7 +2,7 @@
   - if @user == current_user
     .tiles__item.big-tile
       .tiles__item__wrapper.hoverTrigger
-        .item-object.modal-open{data: {target: "modal-boardNew"}}
+        .item-object.modal-open{ data: { target: "modal-boardNew" } }
           .item-object__img.no-img.board-img
             = fa_icon("plus-circle", class: "fa-3x")
         .item-info
@@ -19,4 +19,6 @@
             .item-pin 16 ピン
           - if @user == current_user
             .item-info--right
-              .item-edit.hidden 編集
+              .item-edit.hidden.modal-open{ data: { target: "modal-boardEdit" + board.id.to_s } } 編集
+    - if @user == current_user
+      = render partial: "/shared/modal-boardEdit", locals: { board: board }

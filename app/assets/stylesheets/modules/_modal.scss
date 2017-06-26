@@ -140,11 +140,11 @@
       .submit-button {
         @include textBtn();
         display: block;
-        width: 100px;
+        // width: 100px;
         background-color: $accent-color;
         color: white;
         border: none;
-        float: right;
+        // float: right;
         &:hover {
           cursor: pointer;
         }

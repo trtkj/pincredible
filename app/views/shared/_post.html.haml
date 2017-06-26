@@ -10,11 +10,10 @@
           .modal-title ピンを作成
           .close-button
             = fa_icon("times", class: "fa-lg")
-        .modal__window__container.align-center
-          .content2
-            = f.label :image do
-              = f.file_field :image, class: "hidden"
-              .button--gray 写真を選択
+        .modal__window__footer.align-center
+          = f.label :image do
+            = f.file_field :image, class: "hidden"
+            .button--gray 写真を選択
         .modal__window__footer
     .modal__window#upload2
       .modal__window--left
@@ -34,6 +33,5 @@
               .board-item.newPinTrigger{ id: "#{board.id}"}
                 .board-image a
                 .board-title #{board.title}
-                .board-button
-                  %span 保存
+                .board-button 保存
         .modal__window__footer

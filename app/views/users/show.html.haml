@@ -23,4 +23,5 @@
   = render partial: "/shared/pins", locals: {display: "hidden"}
   - if user_signed_in?
     = render partial: "/shared/post"
-  = render partial: "/shared/modal-boardNew"
+    - if current_user == @user
+      = render partial: "/shared/modal-boardNew"
