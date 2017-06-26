@@ -1,24 +1,22 @@
-.boards
+.tiles#boards
   - if @user == current_user
-    .boards__item
-      .boards__item__wrapper
+    .tiles__item.big-tile
+      .tiles__item__wrapper.hoverTrigger
         .item-object.modal-open{data: {target: "modal-boardNew"}}
-          .item-img
+          .item-object__img.no-img.board-img
             = fa_icon("plus-circle", class: "fa-3x")
         .item-info
           .item-info__text 新規ボードを作成
   - @boards.each do |board|
-    .boards__item
-      .boards__item__wrapper
+    .tiles__item.big-tile
+      .tiles__item__wrapper.hoverTrigger
         .item-object
           = link_to "", "/boards/#{board.id}", class: "item-link"
-          = image_tag "chari.jpg", class: "item-img"
+          = image_tag "chari.jpg", class: "item-object__img board-img"
         .item-info
           .item-info--left
             .item-title #{board.title}
             .item-pin 16 ピン
           - if @user == current_user
             .item-info--right
-              .item-edit
-                = link_to "", "/#2", class: "link"
-                %span.link-text 編集
+              .item-edit.hidden 編集

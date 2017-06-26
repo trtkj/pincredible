@@ -1,117 +1,30 @@
-= content_tag(:div, class: "pins #{display}") do
+= content_tag(:div, class: "tiles #{display}", id: "pins") do
   - if @user == current_user
-    .pins__item
-      .pins__item__wrapper
-        = link_to "", "/#", class: "item-link"
-        .item-bg
-          = fa_icon("plus-circle", class: "fa-3x")
+    .tiles__item.small-tile
+      .tiles__item__wrapper.hoverTrigger.modal-open{data: {target: "modal-upload"}}
+        .item-object
+          .item-object__img.no-img.height236
+            = fa_icon("plus-circle", class: "fa-3x")
         .item-info
           .item-info__text ピンを保存する
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "chari.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "lump.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "radio.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "chari.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "radio.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
-  .pins__item
-    .pins__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "chari.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin
-          = fa_icon("thumb-tack")
-          %span 16
-      .item-description
-        %p descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
-    .pins__item__user
-      = link_to "", "/#2", class: "item-user--link"
-      .item-user--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .item-user--right
-        .user-name Koji Tsuruta
-        .user-board My Favorite
+  - @pins.each do |pin|
+    .tiles__item.small-tile
+      .tiles__item__wrapper.hoverTrigger
+        .item-object
+          = link_to "", pin_path(pin), class: "item-link zoom-in"
+          = image_tag pin.image, class: "item-object__img pin-img"
+        .item-info
+          .item-info--left
+            .item-title #{pin.title}
+          .item-info--right.item-pin
+            = fa_icon("thumb-tack")
+            %span 16
+        .item-description
+          = simple_format(pin.description, class: "pin-description")
+      .tiles__item__user
+        = link_to "", "/#2", class: "item-user--link"
+        .item-user--left
+          = image_tag "obasan.png", class: "user-avatar"
+        .item-user--right
+          .user-name Koji Tsuruta
+          .user-board My Favorite

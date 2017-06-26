@@ -5,12 +5,19 @@ $primary-color-dark: #EEEEEE;
 $secondary-color: #2F3E51;
 $secondary-color-light: #505A66;
 $secondary-color-dark: #253141;
-$accent-color: #eb6f6f;
 $alert-color: #FF6B6B;
+
+$accent-color: #eb6f6f;
 $mono-color-white: #FFFFFF;
-$mono-color-light: #EEEEEE;
-$mono-color-middle: #CCCCCC;
-$mono-color-dark: #333333;
+$mono-color-light: #EFEFEF;
+$mono-color-middle: #DEDEDE;
+$mono-color-dark: #CDCDCD;
+
+//font-color
+$font-color-white: #FFFFFF;
+$font-color-light: #999;
+$font-color-middle: #555;
+$font-color-dark: #333;
 
 // Space
 $main-padding-horizontal: 40px;

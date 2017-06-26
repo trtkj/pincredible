@@ -5,32 +5,31 @@
   .pin
     .pin__menu
       .menu--left
-        .menu-button
-          = link_to "", "/#1", class: "menu-link"
-          = fa_icon("pencil", class: "fa-lg menu-icon")
-        .menu-button
-          = link_to "", "/#1", class: "menu-link"
-          = fa_icon("arrows", class: "fa-lg menu-icon")
+        - if @pin.user == current_user
+          .menu-button.modal-open{data: {target: "modal-pinEdit"}}
+            = fa_icon("pencil", class: "fa-lg menu-icon")
       .menu--right
-        .button
-          = link_to "", "/#", class: "link"
+        .button.modal-open{data: {target: "modal-saveToBoard"}}
           %span.link-text 保存
     .pin__title
-      %h2.pin__title__text ほにゃほにゃ
+      %h2.pin__title__text #{@pin.title}
     .pin__image
-      = image_tag "chari.jpg", class: "item-img"
+      = image_tag @pin.image, class: "item-img"
     .pin__user
       .pin-user--left
-        = image_tag "obasan.png", class: "user-avatar"
+        = link_to image_tag(@pin.user.avatar, class: "user-avatar"), user_path(@pin.user)
       .pin-user--right
         .user-label 保存したユーザー：
-        .user-name Koji Tsuruta
+        = link_to "#{@pin.user.nickname}", user_path(@pin.user), class: "user-name link-text"
     .pin__description
-      %p.pin__description__text ｆはおうえｋｆｒじょふぁんｂうぃうえｈふぁ
+      = simple_format(@pin.description, class: "pin__description__text")
     .pin__date
     .pin__board
       .pin-board--left
         = image_tag "obasan.png", class: "user-avatar"
       .pin-board--right
         .board-event Aさんが「B」に保存しました
-
+- if user_signed_in?
+  = render partial: "shared/modal-saveToBoard"
+- if @pin.user == current_user
+  = render partial: "shared/modal-pinEdit"

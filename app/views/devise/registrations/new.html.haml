@@ -1,7 +1,6 @@
 .container-signup
-  .button
-    = link_to "", new_session_path(resource_name), class: "link"
-    %span.link-text ログイン
+  .right-top.button--gray
+    = link_to "ログイン", new_session_path(resource_name)
   .form
     .logo-area
       = image_tag "logo.png", class: "logo", size: "44x44", alt: "logo"
@@ -14,10 +13,10 @@
         = f.email_field :email, placeholder: "メール", class: "field-input"
         = f.password_field :password, autocomplete: "off", placeholder: "パスワードを作成", class: "field-input"
         = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードを再入力", class: "field-input"
-        = f.submit "続行", class: "submit-button"
+        = f.submit "続行", class: "button--red wide"
       .notice アカウントを作成しても、Pincredibleの利用規約とプライバシーポリシーに同意するものとみなしません。
   .footer
-    %ul.footer__link
-      %li.footer__link__item Pincredible について
-      %li.footer__link__item 利用規約
-      %li.footer__link__item ヘルプ
+    %ul.footer__list
+      %li.footer__list__item Pincredible について
+      %li.footer__list__item 利用規約
+      %li.footer__list__item ヘルプ

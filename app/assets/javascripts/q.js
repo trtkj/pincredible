@@ -1,16 +1,48 @@
-$(function(){
-  function setTiles(selector){
-    $(selector).masonry({
-      // options
-      itemSelector: selector + "__item",
-      // columnWidth: 200
+$(document).on('turbolinks:load', function() {
+
+  function setTiles(){
+    $(".tiles").masonry({
+      itemSelector: ".tiles__item",
       fitWidth: true,
       transitionDuration: 0
     });
   }
 
-  setTiles(".pins");
-  setTiles(".boards");
+  function saveToBoardMsg(board_title, pin_image_url){
+    $(".modal").hide();
+    $("#upload1").show();
+    $("#upload2").hide();
+    var target = $("#modal-saveSuccess").find(".content2");
+    var imgHtml = $('<img>').attr({src: pin_image_url, class: "preview"});
+    target.append(imgHtml);
+    target.append("「" + board_title + "」に保存しました!");
+    $("#modal-saveSuccess").show();
+    $(".modal__bg, .close-button").click(function(){
+      $("#modal-saveSuccess").hide();
+    });
+  }
+
+  function saveToBoard(board_id, pin_id){
+    var selectBoardUrl = "/boards/" + board_id;
+    console.log("saveToBoardメソッドが呼ばれました")
+    $.ajax({
+      type: "POST",
+      url: "/board_pins",
+      data: {
+        "board_id": board_id,
+        "pin_id": pin_id
+      },
+      dataType: "json"
+    })
+    .done(function(data){
+      saveToBoardMsg(data.board_title, data.pin_image.url);
+    })
+    .fail(function(){
+      alert("ボードへの登録に失敗しました");
+    });
+  }
+  setTiles();
+
 
   $(".modal-open").click(function(){
     $(".modal").hide();
@@ -18,19 +50,9 @@ $(function(){
     $(modal).show();
     $(".modal__bg, .close-button").click(function(){
       var thisForm = $(this).parents("form")[0];
-      thisForm.reset();
-      // console.log("thisForm: " + thisForm);
-      // var thisFile = thisForm.find(".inputFileType");
-      // thisFile.replaceWith($('.inputFileType').clone(true));
-      // var a = $(".inputFileType");
-      // console.log("a: " + a);
-      // $("#pin_image").val("");
-      // $("form").each(function(){this.reset();});
-      // $("form").each(function(){
-      //   this.serializeArray().each(function(){
-      //     this.val("")
-      //   });
-      // });
+      if (thisForm) {
+        thisForm.reset();
+      };
       $(modal).hide();
       $("#upload1").show();
       $("#upload2").hide();
@@ -51,18 +73,57 @@ $(function(){
   });
 
   $("#boardsOn").click(function() {
-    $(".boards").css('display','block');
-    setTiles(".boards");
-    $(".pins").css('display','none');
+    $("#boards").css('display','block');
+    setTiles();
+    $("#pins").css('display','none');
     $("#pinsOn").removeClass('select');
     $(this).addClass('select')
   });
 
   $("#pinsOn").click(function() {
-    $(".pins").css('display','block');
-    setTiles(".pins");
-    $(".boards").css('display','none');
+    $("#pins").css('display','block');
+    setTiles();
+    $("#boards").css('display','none');
     $("#boardsOn").removeClass('select');
     $(this).addClass('select')
+  });
+
+  $(".newPinTrigger").click(function(){
+    var board_id = $(this).attr("id");
+    var thisForm = $(".newPinForm")
+    var newPinUrl = thisForm.attr("action");
+    var fd = new FormData(thisForm.get(0));
+    $.ajax({
+      type: "POST",
+      url: newPinUrl,
+      data: fd,
+      processData: false,
+      contentType: false,
+      dataType: "json"
+    })
+    .done(function(data){
+      console.log("ピン作成OK");
+      var pin_id = data.pin_id;
+      saveToBoard(board_id, pin_id);
+    })
+    .fail(function(){
+      alert("ピンの作成に失敗しました");
+    });
+  });
+
+  $(".saveToBoardTrigger").click(function(){
+    var board_id = $(this).attr("id");
+    var pin_id = $(this).closest(".modal__window").attr("id");
+    saveToBoard(board_id, pin_id);
+  });
+
+  $(".hoverTrigger").hover(function(){
+    $(this).parent().css('background-color', '#EFEFEF');
+    $(this).find(".no-img").css('background-color', '#CDCDCD');
+    $(this).find(".item-edit").removeClass("hidden");
+  }, function(){
+    $(this).parent().css('background-color', 'white');
+    $(this).find(".no-img").css('background-color', '#EFEFEF');
+    $(this).find(".item-edit").addClass("hidden");
   });
 });

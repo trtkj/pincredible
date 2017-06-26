@@ -31,13 +31,13 @@
     display: flex;
     .modal-image{
       margin-bottom: 30px;
-      .preview {
-        margin: auto;
-        display: block;
-        width: 216px;
-        height: auto;
-        border-radius: 8px;
-      }
+    }
+    .preview {
+      margin: auto;
+      display: block;
+      width: 216px;
+      height: auto;
+      border-radius: 8px;
     }
     &--left {
       // flex: 1;
@@ -75,6 +75,11 @@
       .align-center {
         margin: 0 auto;
       }
+      .message {
+        font-size: 30px;
+        text-align: center;
+        line-height: 60px;
+      }
       .content {
         padding: 15px 25px;
         border-bottom: 1px solid $mono-color-light;
@@ -88,6 +93,10 @@
           height: 42px;
           padding: 10px;
           border-bottom: 1px solid $mono-color-light;
+          cursor: pointer;
+          &:hover {
+            background-color: $mono-color-light;
+          }
           .board-image {
             width: 24px;
           }

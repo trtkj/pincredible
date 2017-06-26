@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @board = Board.new
     @boards = @user.boards
+    @pins = @user.pins.order("created_at DESC")
   end
 
   def edit
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to :root
+      redirect_to @user
     else
       render :edit
     end

@@ -14,11 +14,10 @@
           .change
             = f.label :avatar do
               = f.file_field :avatar, class: "hidden"
-              .file-button
-                %span.link-text 写真を変更
+              .button--gray 写真を変更
         = f.label :email, "Email", class: "field-label"
         = f.email_field :email, class: "field-input"
         = f.label :about, "自己紹介", class: "field-label"
         = f.text_area :about, class: "field-input"
       .actions
-        = f.submit "設定を保存", class: 'btn'
+        = f.submit "設定を保存", class: 'button--red'

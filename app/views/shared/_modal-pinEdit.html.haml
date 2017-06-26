@@ -1,0 +1,21 @@
+.modal#modal-pinEdit
+  = form_for @pin do |f|
+    .modal__bg
+    .modal__window
+      .modal__window--right
+        .modal__window__header
+          .modal-title ピンを編集
+          .close-button
+            = fa_icon("times", class: "fa-lg")
+        .modal__window__container
+          .content
+            .modal-image
+              = image_tag @pin.image, class: "preview"
+            = f.label :title, "ピンのタイトル", class: "field-label"
+            = f.text_field :title, class: "field-input"
+            = f.label :description, "ピンの説明", class: "field-label"
+            = f.text_area :description, class: "field-input"
+        .modal__window__footer
+          .button 削除
+          .footer-center
+          = f.submit "保存", class: "button"

@@ -10,4 +10,5 @@ class ApplicationController < ActionController::Base
   def new_pin
     @newPin = Pin.new
   end
+
 end
