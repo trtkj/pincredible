@@ -5,12 +5,12 @@
       -if user_signed_in? && current_user.id == @board.user_id
         .menu-button.modal-open{data: {target: "modal-boardEdit" + @board.id.to_s}}
           = fa_icon("pencil", class: "fa-lg menu-icon")
-        .menu-button
+        .menu-button.releaseToggle
           = fa_icon("arrows", class: "fa-lg menu-icon")
     .board-header__info
       .board-header__info--left
         %h2.title-text #{@board.title}
-        %h3.board-pins 4 pins
+        %h3.board-pins #{@board.board_pins_count} ピン
         %p.board-about #{@board.description}
       .board-header__info--right
         = link_to image_tag(@board.user.avatar, class: "avatar--small"), user_path(@board.user)

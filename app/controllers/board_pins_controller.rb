@@ -8,6 +8,10 @@ class BoardPinsController < ApplicationController
   end
 
   def destroy
+    # binding.pry
+    @board_pin = BoardPin.find(params[:id])
+    @board_pin.destroy
+    redirect_to :back
   end
 
   private

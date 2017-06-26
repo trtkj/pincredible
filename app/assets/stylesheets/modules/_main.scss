@@ -57,6 +57,7 @@ a {
             position: absolute;
             top: 0;
             right: 0;
+            z-index: 2;
           }
           .zoom-in:hover {
             cursor: zoom-in;
@@ -79,9 +80,47 @@ a {
           .board-img {
             height: 236px;
             width: 100%;
+            position: relative;
+            // border: 1px solid $mono-color-white;
+            // box-shadow: 1px $mono-color-white inset;
+            // border-radius: 8px;
+            .img{
+              position: absolute;
+              // background-color: $mono-color-light;
+              width: 50%;
+              height: 118px;
+              object-fit: cover;
+              box-shadow: 1px 1px $mono-color-white inset;
+              // overflow: hidden;
+              &--0 {
+                top: 0;
+                left: 0;
+                border-top-left-radius: 8px;
+              }
+              &--1 {
+                top: 0;
+                right: 0;
+                border-top-right-radius: 8px;
+              }
+              &--2 {
+                bottom: 0;
+                left: 0;
+                border-bottom-left-radius: 8px;
+              }
+              &--3 {
+                bottom: 0;
+                right: 0;
+                border-bottom-right-radius: 8px;
+              }
+            }
           }
           .no-img{
             background-color: $mono-color-light;
+          }
+          .releaseTrigger {
+            position: absolute;
+            top: 20px;
+            right: 25px;
           }
         }
         .item-info {
@@ -129,11 +168,12 @@ a {
         }
       }
       &__user {
-        height: 28px;
+        min-height: 28px;
         margin: 0 8px 6px;
         border-radius: 4px;
         position: relative;
         padding: 6px 8px;
+        display: flex;
         &:hover {
           background-color: $mono-color-light;
         }
@@ -144,6 +184,7 @@ a {
           position: absolute;
           top: 0;
           right: 0;
+          z-index: 2;
           &:hover {
             cursor: pointer;
           }
@@ -153,16 +194,15 @@ a {
           }
         }
         .item-user--left {
-          float: left;
           margin-right: 8px;
           .user-avatar {
             width: 28px;
             height: 28px;
             border-radius: 50%;
+            object-fit: cover;
           }
         }
         .item-user--right {
-          width: 186px;
           font-size: 8.6px;
           line-height: 14px;
           .user-name {
@@ -231,4 +271,19 @@ a {
 }
 .right {
   float: right;
+}
+.left {
+  float: left;
+}
+.align-center {
+  margin: 0 auto;
+  // text-align: center;
+}
+.toggleOn {
+  // background-color: $accent-color;
+  // color: white;
+  background-color: $mono-color-dark;
+}
+.textCut180 {
+  @include textCut(180px);
 }

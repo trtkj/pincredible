@@ -4,7 +4,8 @@
     .modal__window
       .modal__window--right
         .modal__window__header
-          .modal-title ピンを編集
+          - if current_user == @pin.user
+            .modal-title ピンを編集
           .close-button
             = fa_icon("times", class: "fa-lg")
         .modal__window__container
@@ -16,6 +17,6 @@
             = f.label :description, "ピンの説明", class: "field-label"
             = f.text_area :description, class: "field-input"
         .modal__window__footer
-          .button 削除
+          .button--gray.left 削除
           .footer-center
-          = f.submit "保存", class: "button"
+          = f.submit "保存", class: "button--red right"

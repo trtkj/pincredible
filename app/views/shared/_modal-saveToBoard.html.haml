@@ -1,6 +1,6 @@
 .modal#modal-saveToBoard
   .modal__bg
-  .modal__window{ id: "#{@pin.id}"}
+  .modal__window{ id: "#{@pin.id}" }
     .modal__window--left
       .modal-image
         = image_tag @pin.image, class: "preview"
@@ -12,8 +12,11 @@
       .modal__window__container
         .content2
           - current_user.boards.each do |board|
-            .board-item.saveToBoardTrigger{ id: "#{board.id}"}
-              .board-image
-              .board-title #{board.title}
+            .board-item.saveToBoardTrigger{ id: "#{board.id}" }
+              - if board.pins.first().present?
+                = image_tag board.pins.last.image, class: "board-image"
+              - else
+                .board-image
+              .board-title.textCut180 #{board.title}
               .board-button 保存
       .modal__window__footer

@@ -7,7 +7,7 @@
   line-height: 36px;
   position: relative;
   border: none;
-  // display: block;
+  // display: inline-block;
   // cursor: pointer;
   padding: 0 15px;
   &:hover {
@@ -39,6 +39,7 @@
   position: relative;
   &:hover {
     background-color: $mono-color-light;
+    cursor: pointer;
   }
   .menu-link {
     width: 100%;
@@ -51,4 +52,11 @@
   .menu-icon {
     line-height: $size;
   }
+}
+
+@mixin textCut($width){
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

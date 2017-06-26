@@ -1,7 +1,8 @@
 class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
-    @pins = @board.pins
+    @board_pins = @board.board_pins
+    # binding.pry
   end
 
   def create

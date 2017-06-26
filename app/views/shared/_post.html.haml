@@ -1,5 +1,5 @@
 .post
-  .post__button.modal-open{data: {target: "modal-upload"}}
+  .post__button.modal-open{ data: { target: "modal-upload" } }
     = fa_icon("plus")
 .modal#modal-upload
   = form_for @newPin, html: { class: "newPinForm" } do |f|
@@ -13,7 +13,7 @@
         .modal__window__footer.align-center
           = f.label :image do
             = f.file_field :image, class: "hidden"
-            .button--gray 写真を選択
+            .button--red 写真を選択
         .modal__window__footer
     .modal__window#upload2
       .modal__window--left
@@ -30,8 +30,11 @@
         .modal__window__container
           .content2
             - current_user.boards.each do |board|
-              .board-item.newPinTrigger{ id: "#{board.id}"}
-                .board-image a
-                .board-title #{board.title}
+              .board-item.newPinTrigger{ id: "#{board.id}" }
+                - if board.pins.first().present?
+                  = image_tag board.pins.last.image, class: "board-image"
+                - else
+                  .board-image
+                .board-title.textCut180 #{board.title}
                 .board-button 保存
         .modal__window__footer

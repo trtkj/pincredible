@@ -125,4 +125,10 @@ $(document).on('turbolinks:load', function() {
     $(this).find(".no-img").css('background-color', '#EFEFEF');
     $(this).find(".item-edit").addClass("hidden");
   });
+
+  $(".releaseToggle").click(function(){
+    $(this).toggleClass("toggleOn");
+    $(".releaseTrigger").toggle();
+  });
+
 });

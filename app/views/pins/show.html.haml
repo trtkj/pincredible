@@ -19,16 +19,21 @@
       .pin-user--left
         = link_to image_tag(@pin.user.avatar, class: "user-avatar"), user_path(@pin.user)
       .pin-user--right
-        .user-label 保存したユーザー：
+        .user-label 作成したユーザー：
         = link_to "#{@pin.user.nickname}", user_path(@pin.user), class: "user-name link-text"
     .pin__description
       = simple_format(@pin.description, class: "pin__description__text")
     .pin__date
-    .pin__board
-      .pin-board--left
-        = image_tag "obasan.png", class: "user-avatar"
-      .pin-board--right
-        .board-event Aさんが「B」に保存しました
+    - if @pin.board_pins.present?
+      .pin__board
+        .pin-board--left
+          = link_to image_tag(@pin.board_pins.last.board.user.avatar, {class: "user-avatar"}), user_path(@pin.board_pins.last.board.user)
+        .pin-board--right
+          .board-event
+            = link_to @pin.board_pins.last.board.user.nickname, user_path(@pin.board_pins.last.board.user), class: "textCut400"
+            さんが「
+            = link_to @pin.board_pins.last.board.title, board_path(@pin.board_pins.last.board), class: "textCut400"
+            」に保存しました
 - if user_signed_in?
   = render partial: "shared/modal-saveToBoard"
 - if @pin.user == current_user
