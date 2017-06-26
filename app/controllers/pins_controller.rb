@@ -6,9 +6,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
-    # binding.pry
     if @pin.save
-      # redirect_to @pin
     else
       redirect_to :back
     end
