@@ -8,7 +8,7 @@ class PinsController < ApplicationController
     @pin = Pin.new(pin_params)
     if @pin.save
     else
-      redirect_to :back
+      @errors = @pin.errors.full_messages
     end
   end
 
