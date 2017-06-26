@@ -4,70 +4,179 @@ body {
   flex-direction: column;
   color: #999999;
 }
-
+a {
+  &:link, &:visited, &:hover, &:active {
+    color: $font-color-dark;
+    text-decoration: none;
+  }
+}
+.small-tile {
+  width: 256px;
+}
+.big-tile {
+  width: 328px;
+}
 .container {
   flex: 1;
   background-color: white;
-  overflow: auto;
+  overflow-y: scroll;
   padding: 14px;
-  .pins {
+  .hidden {
+    display: none;
+  }
+  .shown {
+    display: block;
+  }
+  .tiles {
     margin: 0 auto;
     background-color: white;
     &__item {
-      width: 256px;
-      margin: 4px 2px;
-      background-color: white;
+      // width: 325px;
+      margin: 4px 2px 20px;
+      // background-color: green;
       word-break: break-word;
       border-radius: 6px;
+      position: relative;
+      &:hover {
+        cursor: pointer;
+      }
       &__wrapper {
-        width: 236px;
         margin: 10px 10px 0;
-        position: relative;
-        .item-link {
-          width: 100%;
-          height: 100%;
-          display: block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          &:hover {
+        .height236 {
+          height: 236px;
+        }
+        // .width236 {
+        //   width: 236px;
+        // }
+        .item-object {
+          margin: 0 8px 6px;
+          .item-link {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+          }
+          .zoom-in:hover {
             cursor: zoom-in;
           }
-          &:link, &:visited, &:hover, &:active {
-            color: black;
-            text-decoration: none;
+          &__img {
+            display: block;
+            width: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            .fa-plus-circle {
+              color: $accent-color;
+              margin: 0 auto;
+            }
           }
-        }
-        .item-img {
-          width: 236px;
-          border-radius: 8px;
-          margin-bottom: 8px;
+          .pin-img {
+            width: 100%;
+            height: auto;
+          }
+          .board-img {
+            height: 236px;
+            width: 100%;
+            position: relative;
+            // border: 1px solid $mono-color-white;
+            // box-shadow: 1px $mono-color-white inset;
+            // border-radius: 8px;
+            .img{
+              position: absolute;
+              // background-color: $mono-color-light;
+              width: 50%;
+              height: 118px;
+              object-fit: cover;
+              box-shadow: 1px 1px $mono-color-white inset;
+              // overflow: hidden;
+              &--0 {
+                top: 0;
+                left: 0;
+                border-top-left-radius: 8px;
+              }
+              &--1 {
+                top: 0;
+                right: 0;
+                border-top-right-radius: 8px;
+              }
+              &--2 {
+                bottom: 0;
+                left: 0;
+                border-bottom-left-radius: 8px;
+              }
+              &--3 {
+                bottom: 0;
+                right: 0;
+                border-bottom-right-radius: 8px;
+              }
+            }
+          }
+          .no-img{
+            background-color: $mono-color-light;
+          }
+          .releaseTrigger {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+          }
         }
         .item-info {
           margin: 0 8px 6px;
-          &__title {
-            width: 180px;
+          display: flex;
+          .item-pin {
+            font-size: 8.6px;
+            line-height: 15px;
+          }
+          .item-title {
             font-size: 14px;
             font-weight: bold;
-            float: left;
+            line-height: 21px;
           }
-          &__pin {
-            float: right;
-            font-size: 8.6px;
+          .item-edit {
+            @include textBtn();
+            background-color: $mono-color-middle;
+            z-index: 2;
+            // font-weight: normal;
+            font-size: 12px;
+            &:hover {
+              background-color: $mono-color-dark;
+            }
           }
+          &--left {
+            flex: 1;
+            // .pin-title {
+            //   font-size: 14px;
+            //   font-weight: bold;
+            // }
+          }
+          &--right {
+          }
+          // .pin-number {
+          //   font-size: 8.6px;
+          // }
+          // &__text {
+          //   font-size: 18px;
+          //   line-height: 36px;
+          // }
         }
         .item-description {
-          font-size: 12px;
           margin: 0 8px 6px;
-          clear: both;
+          font-size: 12px;
         }
       }
       &__user {
-        height: 28px;
+        min-height: 28px;
         margin: 0 8px 6px;
         border-radius: 4px;
         position: relative;
         padding: 6px 8px;
+        display: flex;
+        &:hover {
+          background-color: $mono-color-light;
+        }
         .item-user--link {
           width: 100%;
           height: 100%;
@@ -75,6 +184,7 @@ body {
           position: absolute;
           top: 0;
           right: 0;
+          z-index: 2;
           &:hover {
             cursor: pointer;
           }
@@ -84,16 +194,15 @@ body {
           }
         }
         .item-user--left {
-          float: left;
           margin-right: 8px;
           .user-avatar {
             width: 28px;
             height: 28px;
             border-radius: 50%;
+            object-fit: cover;
           }
         }
         .item-user--right {
-          width: 186px;
           font-size: 8.6px;
           line-height: 14px;
           .user-name {
@@ -105,138 +214,76 @@ body {
       }
     }
   }
-  .boards {
-    margin: 0 auto;
-    background-color: white;
-    &__item {
-      width: 325px;
-      margin: 4px 2px;
-      background-color: white;
-      word-break: break-word;
-      border-radius: 6px;
-      &__wrapper {
-        width: 305px;
-        margin: 10px 10px 0;
-        position: relative;
-        .item-link {
-          width: 100%;
-          height: 100%;
-          display: block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          &:hover {
-            cursor: zoom-in;
-          }
-          &:link, &:visited, &:hover, &:active {
-            color: black;
-            text-decoration: none;
-          }
-        }
-        .item-img {
-          width: 305px;
-          height: 200px;
-          border-radius: 8px;
-          margin-bottom: 8px;
-        }
-        .item-info {
-          margin: 0 8px 6px;
-          &__title {
-            font-size: 14px;
-            font-weight: bold;
-          }
-          &__pin {
-            font-size: 8.6px;
-          }
-        }
-      }
-    }
-  }
   .post {
-    width: 84px;
+    width: 64px;
     position: fixed;
     right: 14px;
     bottom: 34px;
     &__button {
-      position: relative;
       width: 40px;
       height: 40px;
-      margin: 0 auto;
       border-radius: 50%;
       background-color: white;
       text-align: center;
       box-shadow: 0 2px 0 0.5px #EFEFEF;
-      &--link {
-        width: 100%;
-        height: 40px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 24px;
-        line-height: 40px;
-        &:hover {
-          cursor: pointer;
-        }
-        &:link, &:visited, &:hover, &:active {
-          color: black;
-          text-decoration: none;
-        }
-      }
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
     }
   }
   .user-form {
-    width: 686px;
+    width: 600px;
     margin: 0 auto;
     padding-right: 24px;
     padding-left: 24px;
     background-color: white;
-    .field {
-      margin-bottom: 24px;
-      &-label {
-        font-size: 12px;
-        line-height: 16px;
-        margin-bottom: 6px;
-        
-      }
-      &-input {
-        // margin: 0 auto 7px;
-        border-radius: 4px;
-        background-color: #EFEFEF;
-        width: 100%;
-        input {
-          width: 100%;
-          height: 17px;
-          padding: 10px;
-          font-size: 14px;
-          background-color: transparent;
-          border: 0;
-          outline: none;
-        }
-        textarea {
-          width: 652px;
-          rows: 3;
-          padding: 16px;
-          font-size: 14px;
-          background-color: transparent;
-          border: 0;
-          outline: none;
-        }
-      }
+    .field-avatar {
+      display: flex;
+      align-items: center;
     }
-    .actions {
-      .btn {
-        @include textBtn();
-        display: block;
-        width: 100px;
-        background-color: $accent-color;
-        color: white;
-        border: none;
-        float: right;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+    .avatar-image {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 15px;
     }
   }
+}
+.wide {
+  width: 100%;
+}
+.button {
+  @include textBtn();
+  &--gray {
+    @include textBtn();
+    color: $font-color-dark;
+    background-color: $mono-color-light;
+    &:hover {
+      background-color: $mono-color-middle;
+    }
+  }
+  &--red {
+    @include textBtn();
+    background-color: $accent-color;
+    color: $font-color-white;
+  }
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.align-center {
+  margin: 0 auto;
+  // text-align: center;
+}
+.toggleOn {
+  // background-color: $accent-color;
+  // color: white;
+  background-color: $mono-color-dark;
+}
+.textCut180 {
+  @include textCut(180px);
 }

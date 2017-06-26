@@ -36,7 +36,7 @@
 - belongs_to :user
 - has_many :boards, through :boards_pins
 
-## boards_pins table
+## board_pins table
 | column | type | option |
 | ---- | ---- | ---- |
 | board_id | integer | null: false |

@@ -41,6 +41,7 @@
           position: absolute;
           right: 0;
           bottom: 0;
+          object-fit: cover;
         }
         .avatar--large {
           width: 168px;
@@ -49,8 +50,31 @@
           position: absolute;
           right: 0;
           bottom: 0;
+          object-fit: cover;
         }
       }
     }
+  }
+  .show-trigger {
+    height: 44px;
+    width: 136px;
+    text-align: center;
+    margin: 15px auto;
+    display: flex;
+    .select {
+      background-color: $mono-color-light;
+    }
+    &__option {
+      width: 60px;
+      height: 36px;
+      border-radius: 18px;
+      line-height: 36px;
+      font-size: 14px;
+      margin: 4px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
   }
 }

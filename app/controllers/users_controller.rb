@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
+    @board = Board.new
+    @boards = @user.boards
+    @pins = @user.pins.order("created_at DESC")
   end
 
   def edit
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to :root
+      redirect_to @user
     else
       render :edit
     end
@@ -22,6 +25,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :image, :about)
+    params.require(:user).permit(:nickname, :email, :avatar, :about)
   end
 end

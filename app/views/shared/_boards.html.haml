@@ -1,8 +1,30 @@
-.boards
-  .boards__item
-    .boards__item__wrapper
-      = link_to "", "/#", class: "item-link"
-      = image_tag "chari.jpg", class: "item-img"
-      .item-info
-        .item-info__title titletitletitle
-        .item-info__pin 16 ピン
+.tiles#boards
+  - if @user == current_user
+    .tiles__item.big-tile
+      .tiles__item__wrapper.hoverTrigger
+        .item-object.modal-open{ data: { target: "modal-boardNew" } }
+          .item-object__img.no-img.board-img
+            = fa_icon("plus-circle", class: "fa-3x")
+        .item-info
+          .item-info__text 新規ボードを作成
+  - @boards.each do |board|
+    .tiles__item.big-tile
+      .tiles__item__wrapper.hoverTrigger
+        .item-object
+          = link_to "", "/boards/#{board.id}", class: "item-link"
+          .board-img
+            .img.img--0.no-img
+            .img.img--1.no-img
+            .img.img--2.no-img
+            .img.img--3.no-img
+            - board.pins.first(4).each_with_index do |pin, i|
+              = image_tag pin.image, class: "img img--#{i} no-img"
+        .item-info
+          .item-info--left
+            .item-title #{board.title}
+            .item-pin #{board.board_pins_count} ピン
+          - if @user == current_user
+            .item-info--right
+              .item-edit.hidden.modal-open{ data: { target: "modal-boardEdit" + board.id.to_s } } 編集
+    - if @user == current_user
+      = render partial: "/shared/modal-boardEdit", locals: { board: board }

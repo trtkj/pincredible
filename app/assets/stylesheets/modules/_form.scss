@@ -1,0 +1,26 @@
+.field {
+  &-label {
+    font-size: 12px;
+    line-height: 16px;
+    // margin-bottom: 6px;
+  }
+  &-input {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: $mono-color-light;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid $mono-color-light;
+    // border: 0;
+    outline: none;
+    resize: vertical;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    &:focus {
+      background-color: white;
+      border: 1px solid $mono-color-middle;
+    }
+  }
+}

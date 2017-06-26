@@ -4,11 +4,9 @@
     = image_tag "logo.png", class: "logo", size: "28x28", alt: "logo"
   .header__search
     %form
-      .form__box
-        .form__box--left
-          = fa_icon("search", class: "fa-lg")
-        .form__box--right
-          %input{type: "text", placeholder: "検索", class: "search-input"}
+      %label.form__box
+        %input{type: "text", placeholder: "検索", class: "search-input field-input"}
+        = fa_icon("search", class: "fa-lg search-icon")
   .header__menu
     - if user_signed_in?
       .icon-button

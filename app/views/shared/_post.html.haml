@@ -1,3 +1,40 @@
 .post
-  .post__button
-    = link_to "+", "/#4", class: "post__button--link"
+  .post__button.modal-open{ data: { target: "modal-upload" } }
+    = fa_icon("plus")
+.modal#modal-upload
+  = form_for @newPin, html: { class: "newPinForm" } do |f|
+    .modal__bg
+    .modal__window#upload1
+      .modal__window--right
+        .modal__window__header
+          .modal-title ピンを作成
+          .close-button
+            = fa_icon("times", class: "fa-lg")
+        .modal__window__footer.align-center
+          = f.label :image do
+            = f.file_field :image, class: "hidden"
+            .button--red 写真を選択
+        .modal__window__footer
+    .modal__window#upload2
+      .modal__window--left
+        .modal-image
+        = f.label :title, "ピンのタイトル", class: "field-label"
+        = f.text_field :title, class: "field-input"
+        = f.label :description, "ピンの説明", class: "field-label"
+        = f.text_area :description, class: "field-input"
+      .modal__window--right
+        .modal__window__header
+          .modal-title ボードを選択
+          .close-button
+            = fa_icon("times", class: "fa-lg")
+        .modal__window__container
+          .content2
+            - current_user.boards.each do |board|
+              .board-item.newPinTrigger{ id: "#{board.id}" }
+                - if board.pins.first().present?
+                  = image_tag board.pins.last.image, class: "board-image"
+                - else
+                  .board-image
+                .board-title.textCut180 #{board.title}
+                .board-button 保存
+        .modal__window__footer

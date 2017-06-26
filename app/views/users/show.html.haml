@@ -15,7 +15,13 @@
         - if @user.about
           = simple_format(@user.about, class: "board-about")
       .board-header__info--right
-        = image_tag "obasan.png", class: "avatar--large"
+        = image_tag "#{@user.avatar}", class: "avatar--large"
+  .show-trigger
+    .show-trigger__option.select#boardsOn ボード
+    .show-trigger__option#pinsOn ピン
   = render partial: "/shared/boards"
-  = render partial: "/shared/pins"
-  = render partial: "/shared/post"
+  = render partial: "/shared/pins", locals: {display: "hidden"}
+  - if user_signed_in?
+    = render partial: "/shared/post"
+    - if current_user == @user
+      = render partial: "/shared/modal-boardNew"
