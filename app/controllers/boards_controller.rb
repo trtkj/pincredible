@@ -2,7 +2,6 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @board_pins = @board.board_pins
-    # binding.pry
   end
 
   def create
@@ -10,7 +9,6 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to @board
     else
-      binding.pry
     end
   end
 
@@ -19,7 +17,6 @@ class BoardsController < ApplicationController
     if @board.update(board_params)
       redirect_to @board
     else
-      binding.pry
     end
   end
 
