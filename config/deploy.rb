@@ -4,7 +4,8 @@ lock "3.8.1"
 set :application, "pincredible"
 set :repo_url,  'git@github.com:trtkj/pincredible.git'
 
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs) + %w{public/uploads}
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
