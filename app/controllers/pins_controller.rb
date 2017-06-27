@@ -8,7 +8,6 @@ class PinsController < ApplicationController
     @pin = Pin.new(pin_params)
     if @pin.save
     else
-      @errors = @pin.errors.full_messages
     end
   end
 

@@ -105,9 +105,7 @@ $(function() {
       var pin_id = data.pin_id;
       saveToBoard(board_id, pin_id);
     })
-    .fail(function(data){
-      for(var i=0; i < data.errors.length; i++){
-        alert(data.errors[i]);
+    .fail(function(){
       }
     });
   });
