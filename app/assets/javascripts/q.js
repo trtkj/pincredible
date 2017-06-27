@@ -106,7 +106,6 @@ $(function() {
       saveToBoard(board_id, pin_id);
     })
     .fail(function(){
-      }
     });
   });
 
