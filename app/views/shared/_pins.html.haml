@@ -13,7 +13,7 @@
         .tiles__item__wrapper.hoverTrigger
           .item-object
             = link_to "", pin_path(board_pin.pin), class: "item-link zoom-in"
-            = image_tag board_pin.pin.image, class: "item-object__img pin-img"
+            = image_tag board_pin.pin.image.thumb, class: "item-object__img pin-img"
             - if @board.user == current_user
               = link_to "解除", board_pin_path(board_pin), method: :delete , class: "button--gray releaseTrigger hidden"
           .item-info
@@ -27,7 +27,7 @@
         .tiles__item__user
           = link_to "", board_path(board_pin.pin.board_pins.last.board), class: "item-user--link"
           .item-user--left
-            = image_tag board_pin.pin.board_pins.last.board.user.avatar, class: "user-avatar"
+            = image_tag board_pin.pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
           .item-user--right
             .user-name #{board_pin.pin.board_pins.last.board.user.nickname}
             .user-board #{board_pin.pin.board_pins.last.board.title}
@@ -37,7 +37,7 @@
         .tiles__item__wrapper.hoverTrigger
           .item-object
             = link_to "", pin_path(pin), class: "item-link zoom-in"
-            = image_tag pin.image, class: "item-object__img pin-img"
+            = image_tag pin.image.thumb, class: "item-object__img pin-img"
           .item-info
             .item-info--left
               .item-title #{pin.title}
@@ -50,7 +50,7 @@
           .tiles__item__user
             = link_to "", board_path(pin.board_pins.last.board), class: "item-user--link"
             .item-user--left
-              = image_tag pin.board_pins.last.board.user.avatar, class: "user-avatar"
+              = image_tag pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
             .item-user--right
               .user-name #{pin.board_pins.last.board.user.nickname}
               .user-board #{pin.board_pins.last.board.title}

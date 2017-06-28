@@ -17,7 +17,7 @@
       = image_tag @pin.image, class: "item-img"
     .pin__user
       .pin-user--left
-        = link_to image_tag(@pin.user.avatar, class: "user-avatar"), user_path(@pin.user)
+        = link_to image_tag(@pin.user.avatar.thumb, class: "user-avatar"), user_path(@pin.user)
       .pin-user--right
         .user-label 作成したユーザー：
         = link_to "#{@pin.user.nickname}", user_path(@pin.user), class: "user-name link-text"
@@ -27,7 +27,7 @@
     - if @pin.board_pins.present?
       .pin__board
         .pin-board--left
-          = link_to image_tag(@pin.board_pins.last.board.user.avatar, {class: "user-avatar"}), user_path(@pin.board_pins.last.board.user)
+          = link_to image_tag(@pin.board_pins.last.board.user.avatar.thumb, {class: "user-avatar"}), user_path(@pin.board_pins.last.board.user)
         .pin-board--right
           .board-event
             = link_to @pin.board_pins.last.board.user.nickname, user_path(@pin.board_pins.last.board.user), class: "textCut400"
