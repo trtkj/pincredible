@@ -1,4 +1,4 @@
-# users = []
+users = []
 
 20.times do
   user = User.new(
@@ -6,22 +6,21 @@
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     about: Faker::HowIMetYourMother.quote,
+    remote_avatar_url: UiFaces.face
     )
-  user.remote_avatar_url = UiFaces.face
-  user.save
-  # users << user
+  users << user
 end
 
-# User.import users
+User.import users
 
-# boards = []
+boards = []
 
-# 100.times do
-#   boards << Board.new(
-#     user_id: rand(20) + 1,
-#     title: Faker::Book.title,
-#     description: Faker::Friends.quote
-#     )
-# end
+80.times do
+  boards << Board.new(
+    user_id: rand(20) + 1,
+    title: Faker::Book.title,
+    description: Faker::Friends.quote
+    )
+end
 
-# Board.import boards
+Board.import boards
