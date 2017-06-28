@@ -12,7 +12,6 @@
   # users << user
 end
 
-User.import users
 
 boards = []
 
