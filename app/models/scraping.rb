@@ -21,4 +21,15 @@ class Scraping
     pin.description = Faker::Friends.quote
     pin.save
   end
+
+  def self.generate_dummy_boardpins
+    pin_sum = Pin.count
+    Board.find_each do |board|
+      times = rand(5) + 2
+      for i in 0..times do
+        pin_num = rand(pin_sum) + 1
+        BoardPin.create(board_id: board.id, pin_id: pin_num)
+      end
+    end
+  end
 end
