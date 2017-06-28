@@ -1,4 +1,7 @@
 $(function() {
+  $(window).load(function(){
+    setTiles();
+  });
 
   function setTiles(){
     $(".tiles").masonry({

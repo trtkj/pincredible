@@ -15,7 +15,7 @@
         - if @user.about
           = simple_format(@user.about, class: "board-about")
       .board-header__info--right
-        = image_tag "#{@user.avatar}", class: "avatar--large"
+        = image_tag @user.avatar.thumb, class: "avatar--large"
   .show-trigger
     .show-trigger__option.select#boardsOn ボード
     .show-trigger__option#pinsOn ピン

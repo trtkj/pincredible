@@ -13,7 +13,7 @@
         %h3.board-pins #{@board.board_pins_count} ピン
         %p.board-about #{@board.description}
       .board-header__info--right
-        = link_to image_tag(@board.user.avatar, class: "avatar--small"), user_path(@board.user)
+        = link_to image_tag(@board.user.avatar.thumb, class: "avatar--small"), user_path(@board.user)
   = render partial: "/shared/pins"
   - if user_signed_in?
     = render partial: "/shared/post"

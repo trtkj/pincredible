@@ -10,7 +10,7 @@
         = f.label "写真", class: "field-label"
         .field-avatar
           .avatar
-            = image_tag "#{current_user.avatar}", class: "avatar-image"
+            = image_tag current_user.avatar.thumb, class: "avatar-image"
           .change
             = f.label :avatar do
               = f.file_field :avatar, class: "hidden"
