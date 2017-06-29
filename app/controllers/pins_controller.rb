@@ -1,7 +1,10 @@
 class PinsController < ApplicationController
   def index
     @board = Board.new
-    @pins = Pin.order("created_at DESC")
+    @pins = Pin.order("created_at DESC").page(params[:page]).per(20)
+    # binding.pry
+    @endpoint = pagination_pins_path
+    @page_amount = @pins.total_pages
     respond_to do |format|
       format.html
       format.json {
@@ -30,6 +33,11 @@ class PinsController < ApplicationController
   def destroy
     @pin = Pin.find(params[:id])
     @pin.destroy
+  end
+
+  def pagination
+    pins = Pin.all.page(params[:page]).per(20)
+    render partial: 'shared/pin', layout: false, collection: pins
   end
 
   private

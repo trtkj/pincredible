@@ -1,7 +1,7 @@
 = content_tag(:div, class: "tiles #{display}", id: "pins") do
   - if @board.user == current_user && user_signed_in?
     .tiles__item.small-tile
-      .tiles__item__wrapper.hoverTrigger.modal-open{data: {target: "modal-upload"}}
+      .tiles__item__wrapper.hoverTrigger.modal-open{ data: { target: "modal-upload" } }
         .item-object
           .item-object__img.no-img.height236
             = fa_icon("plus-circle", class: "fa-3x")
@@ -32,25 +32,9 @@
             .user-name #{board_pin.pin.board_pins.last.board.user.nickname}
             .user-board #{board_pin.pin.board_pins.last.board.title}
   - else
-    - @pins.each do |pin|
-      .tiles__item.small-tile
-        .tiles__item__wrapper.hoverTrigger
-          .item-object
-            = link_to "", pin_path(pin), class: "item-link zoom-in"
-            = image_tag pin.image.thumb, class: "item-object__img pin-img"
-          .item-info
-            .item-info--left
-              .item-title #{pin.title}
-            .item-info--right.item-pin
-              = fa_icon("thumb-tack")
-              %span #{pin.board_pins_count}
-          .item-description
-            = simple_format(pin.description, class: "pin-description")
-        - if pin.board_pins.present?
-          .tiles__item__user
-            = link_to "", board_path(pin.board_pins.last.board), class: "item-user--link"
-            .item-user--left
-              = image_tag pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
-            .item-user--right
-              .user-name #{pin.board_pins.last.board.user.nickname}
-              .user-board #{pin.board_pins.last.board.title}
+    = render partial: 'shared/pin', collection: @pins
+- if controller_path == "boards" && action_name == "show"
+  = paginate @board_pins
+- else
+  .pagination{ data: { pagination: { endpoint: @endpoint, pages: @page_amount } } }
+
