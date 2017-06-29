@@ -151,3 +151,12 @@
     }
   }
 }
+.container-overlay {
+  width: 100%;
+  height: calc(100% - 65px);
+  position: absolute;
+  top: 65px;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+}

@@ -1,4 +1,12 @@
 class BoardsController < ApplicationController
+  def index
+    respond_to do |format|
+      format.json {
+        @search_boards = Board.where('title LIKE(?)', "%#{params[:content]}%").limit(5)
+      }
+    end
+  end
+
   def show
     @board = Board.find(params[:id])
     @board_pins = @board.board_pins

@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
+
+  def index
+    respond_to do |format|
+      format.json {
+        @search_users = User.where('nickname LIKE(?)', "%#{params[:content]}%").limit(5)
+      }
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @board = Board.new

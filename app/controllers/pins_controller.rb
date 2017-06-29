@@ -2,6 +2,12 @@ class PinsController < ApplicationController
   def index
     @board = Board.new
     @pins = Pin.order("created_at DESC")
+    respond_to do |format|
+      format.html
+      format.json {
+        @search_pins = Pin.where('title LIKE(?)', "%#{params[:content]}%").limit(5)
+      }
+    end
   end
 
   def create
