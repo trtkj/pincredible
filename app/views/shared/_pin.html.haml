@@ -1,0 +1,21 @@
+.tiles__item.small-tile.pin
+  .tiles__item__wrapper.hoverTrigger
+    .item-object
+      = link_to "", pin_path(pin), class: "item-link zoom-in"
+      = image_tag pin.image.thumb, class: "item-object__img pin-img"
+    .item-info
+      .item-info--left
+        .item-title #{pin.title}
+      .item-info--right.item-pin
+        = fa_icon("thumb-tack")
+        %span #{pin.board_pins_count}
+    .item-description
+      = simple_format(pin.description, class: "pin-description")
+  - if pin.board_pins.present?
+    .tiles__item__user
+      = link_to "", board_path(pin.board_pins.last.board), class: "item-user--link"
+      .item-user--left
+        = image_tag pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
+      .item-user--right
+        .user-name #{pin.board_pins.last.board.user.nickname}
+        .user-board #{pin.board_pins.last.board.title}

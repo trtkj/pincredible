@@ -133,4 +133,38 @@ $(function() {
     $(".releaseTrigger").toggle();
   });
 
+  const $paginationElem = $('.pagination');
+  let baseEndpoint = $('.pagination').attr('data-pagination-endpoint') + "?page=";
+  const pagesAmount = $paginationElem.attr('data-pagination-pages');
+  let currentPage = 1;
+
+  /* initialize pagination */
+  $paginationElem.hide()
+  let isPaginating = false
+
+  /* listen to scrolling */
+  $(".container").scroll(function () {
+    if (!isPaginating && currentPage < pagesAmount && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+      isPaginating = true;
+      currentPage++;
+      $paginationElem.show();
+      $.ajax({
+        url: baseEndpoint + currentPage
+      }).done(function (result) {
+        $('#pins').append(result);
+        isPaginating = false;
+      }, function( newElements ) {
+        var $newElems = $( newElements ).hide();
+        console.log("hide")
+        $newElems.imagesLoaded(function(){
+          $newElems.show();
+          $(".tiles").masonry( 'appended', $newElems );
+          console.log("mason")
+        });
+      });
+    }
+    if (currentPage >= pagesAmount) {
+      $paginationElem.hide();
+    }
+  });
 });

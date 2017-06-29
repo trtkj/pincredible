@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @board_pins = @board.board_pins
+    @board_pins = @board.board_pins.page(params[:page]).per(20)
   end
 
   def create
