@@ -14,5 +14,13 @@
         = fa_icon("user", class: "fa-2x menu-icon")
     - else
       .text-button
-        = link_to "", new_user_registration_path, class: "text-link"
-        %span.link-text 登録/ログイン
+        = link_to "", new_user_session_path, class: "text-link"
+        %span.link-text ログイン
+.search__result
+  .message キーワードを入力してください
+  .result#result-pins
+    .result__label ピン
+  .result#result-users
+    .result__label ユーザー
+  .result#result-boards
+    .result__label ボード

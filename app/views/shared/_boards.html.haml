@@ -18,7 +18,7 @@
             .img.img--2.no-img
             .img.img--3.no-img
             - board.pins.first(4).each_with_index do |pin, i|
-              = image_tag pin.image, class: "img img--#{i} no-img"
+              = image_tag pin.image.thumb, class: "img img--#{i} no-img"
         .item-info
           .item-info--left
             .item-title #{board.title}
