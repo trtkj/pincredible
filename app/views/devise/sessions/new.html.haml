@@ -3,7 +3,7 @@
     = link_to "登録", new_registration_path(resource_name)
   .form
     .logo-area
-      = image_tag "logo.png", class: "logo", size: "44x44", alt: "logo"
+      = link_to image_tag("logo.png", class: "logo", size: "44x44", alt: "logo"), "/"
     .greeting-area
       %h1.greeting 他のピンを見るにはログインしてください
     .form-area
