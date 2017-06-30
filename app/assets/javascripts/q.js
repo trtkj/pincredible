@@ -1,16 +1,4 @@
 $(function() {
-  $(window).load(function(){
-    setTiles();
-  });
-
-  function setTiles(){
-    $(".tiles").masonry({
-      itemSelector: ".tiles__item",
-      fitWidth: true,
-      transitionDuration: 0
-    });
-  }
-
   function saveToBoardMsg(board_title, pin_image_url){
     $(".modal").hide();
     $("#upload1").show();
@@ -43,7 +31,6 @@ $(function() {
       alert("ボードへの登録に失敗しました");
     });
   }
-  setTiles();
 
   $(".modal-open").click(function(){
     $(".modal").hide();
@@ -81,7 +68,6 @@ $(function() {
 
   $("#boardsOn").click(function() {
     $("#boards").css('display','block');
-    setTiles();
     $("#pins").css('display','none');
     $("#pinsOn").removeClass('select');
     $(this).addClass('select')
@@ -89,7 +75,6 @@ $(function() {
 
   $("#pinsOn").click(function() {
     $("#pins").css('display','block');
-    setTiles();
     $("#boards").css('display','none');
     $("#boardsOn").removeClass('select');
     $(this).addClass('select')
