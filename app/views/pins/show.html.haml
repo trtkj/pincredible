@@ -4,13 +4,14 @@
     = fa_icon("times", class: "fa-2x menu-icon")
   .pin
     .pin__menu
-      .menu--left
-        - if @pin.user == current_user
-          .menu-button.modal-open{data: {target: "modal-pinEdit"}}
-            = fa_icon("pencil", class: "fa-lg menu-icon")
-      .menu--right
-        .button.modal-open{data: {target: "modal-saveToBoard"}}
-          %span.link-text 保存
+      - if user_signed_in?
+        .menu--left
+          - if @pin.user == current_user
+            .menu-button.modal-open{data: {target: "modal-pinEdit"}}
+              = fa_icon("pencil", class: "fa-lg menu-icon")
+        .menu--right
+          .button.modal-open{data: {target: "modal-saveToBoard"}}
+            %span.link-text 保存
     .pin__title
       %h2.pin__title__text #{@pin.title}
     .pin__image

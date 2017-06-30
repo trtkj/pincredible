@@ -27,7 +27,6 @@ $(function() {
 
   function saveToBoard(board_id, pin_id){
     var selectBoardUrl = "/boards/" + board_id;
-    console.log("saveToBoardメソッドが呼ばれました")
     $.ajax({
       type: "POST",
       url: "/board_pins",
@@ -61,15 +60,21 @@ $(function() {
     });
   });
 
-  $('form').on('change', 'input[type="file"]', function(e) {
+  $("form").on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0];
     var reader = new FileReader();
+    var target = $("form");
     reader.onload = function(e){
-      var imgHtml = $('<img>').attr({src: e.target.result, class: "preview"});
-      $("#upload1").hide();
-      $("#upload2").show().css('display', 'flex');
-      $(".modal-image").empty();
-      $(".modal-image").append(imgHtml);
+      if (target.hasClass("edit_user")){
+        $(".avatar-image").attr({src: e.target.result});
+      }
+      else if (target.hasClass("newPinForm")){
+        var imgHtml = $('<img>').attr({src: e.target.result, class: "preview"});
+        $("#upload1").hide();
+        $("#upload2").show().css('display', 'flex');
+        $(".modal-image").empty();
+        $(".modal-image").append(imgHtml);
+      }
     };
     reader.readAsDataURL(file);
   });
@@ -104,7 +109,6 @@ $(function() {
       dataType: "json"
     })
     .done(function(data){
-      console.log("ピン作成OK");
       var pin_id = data.pin_id;
       saveToBoard(board_id, pin_id);
     })

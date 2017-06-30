@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @board = Board.new
     @boards = @user.boards
-    @pins = @user.pins.order("created_at DESC")
+    @pins = @user.pins.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def edit
