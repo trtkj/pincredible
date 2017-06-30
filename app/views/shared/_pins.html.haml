@@ -1,5 +1,5 @@
 = content_tag(:div, class: "tiles #{display}", id: "pins") do
-  - if is_mine?(@board)
+  - if my_page?
     .tiles__item.small-tile
       .tiles__item__wrapper.hoverTrigger.modal-open{data: {target: "modal-upload"}}
         .item-object
