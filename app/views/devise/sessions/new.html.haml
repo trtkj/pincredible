@@ -5,13 +5,18 @@
     .logo-area
       = link_to image_tag("logo.png", class: "logo", size: "44x44", alt: "logo"), "/"
     .greeting-area
-      %h1.greeting 他のピンを見るにはログインしてください
+      %h1.greeting Pincredibleをもっと楽しむにはログインしてください
     .form-area
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = f.email_field :email, placeholder: "メール", class: "field-input"
         = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "field-input"
         = f.submit "Log in", class: "button--red wide"
       .notice パスワードをお忘れの場合は再度アカウントを作成してください。
+    .form-area
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.email_field :email, value: "a@a", style: "display:none"
+        = f.password_field :password, value: "12345678", class: "field-input hidden", style: "display:none"
+        = f.submit "ゲストアカウントでログイン", class: "button--red wide"
   .footer
     %ul.footer__list
       %li.footer__list__item Pincredible について

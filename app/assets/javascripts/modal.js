@@ -1,4 +1,5 @@
 $(function() {
+
   function saveToBoardMsg(board_title, pin_image_url){
     $(".modal").hide();
     $("#upload1").show();
@@ -47,14 +48,17 @@ $(function() {
     });
   });
 
+  // 画像アップロード時のプレビュー表示
   $("form").on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0];
     var reader = new FileReader();
     var target = $("form");
     reader.onload = function(e){
+      // ユーザーのアバター画像の場合
       if (target.hasClass("edit_user")){
         $(".avatar-image").attr({src: e.target.result});
       }
+      // ピンの画像の場合
       else if (target.hasClass("newPinForm")){
         var imgHtml = $('<img>').attr({src: e.target.result, class: "preview"});
         $("#upload1").hide();
@@ -66,20 +70,7 @@ $(function() {
     reader.readAsDataURL(file);
   });
 
-  $("#boardsOn").click(function() {
-    $("#boards").css('display','block');
-    $("#pins").css('display','none');
-    $("#pinsOn").removeClass('select');
-    $(this).addClass('select')
-  });
-
-  $("#pinsOn").click(function() {
-    $("#pins").css('display','block');
-    $("#boards").css('display','none');
-    $("#boardsOn").removeClass('select');
-    $(this).addClass('select')
-  });
-
+  // ピン作成画面でボードが選択されたとき
   $(".newPinTrigger").click(function(){
     var board_id = $(this).attr("id");
     var thisForm = $(".newPinForm")
@@ -101,12 +92,14 @@ $(function() {
     });
   });
 
+  // ピンをボードに保存するボタンが押されたとき
   $(".saveToBoardTrigger").click(function(){
     var board_id = $(this).attr("id");
     var pin_id = $(this).closest(".modal__window").attr("id");
     saveToBoard(board_id, pin_id);
   });
 
+  // アイテムhover時に背景をグレーに
   $(".hoverTrigger").hover(function(){
     $(this).parent().css('background-color', '#EFEFEF');
     $(this).find(".no-img").css('background-color', '#CDCDCD');
@@ -117,6 +110,7 @@ $(function() {
     $(this).find(".item-edit").addClass("hidden");
   });
 
+  // ボードページでピンを編集する
   $(".releaseToggle").click(function(){
     $(this).toggleClass("toggleOn");
     $(".releaseTrigger").toggle();

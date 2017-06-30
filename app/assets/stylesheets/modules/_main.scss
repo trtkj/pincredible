@@ -130,7 +130,6 @@ a {
             @include textBtn();
             background-color: $mono-color-middle;
             z-index: 2;
-            // font-weight: normal;
             font-size: 12px;
             &:hover {
               background-color: $mono-color-dark;

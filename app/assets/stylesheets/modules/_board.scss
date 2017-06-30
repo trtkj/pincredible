@@ -6,8 +6,6 @@
       margin: 0 28px 15px;
       height: 48px;
       display: flex;
-      // position: fixed;
-      // background-color: rgba(255, 255, 255, 0.95);
       .menu-button {
         @include iconBtn(48px);
       }

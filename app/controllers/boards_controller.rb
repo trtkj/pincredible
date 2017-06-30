@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: [:show, :update]
   def index
     respond_to do |format|
       format.json {
@@ -8,8 +9,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
-    @board_pins = @board.board_pins
+    @board_pins = @board.board_pins.includes(:pin)
   end
 
   def create
@@ -21,7 +21,6 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board = Board.find(params[:id])
     if @board.update(board_params)
       redirect_to @board
     else
@@ -31,5 +30,9 @@ class BoardsController < ApplicationController
   private
   def board_params
     params.require(:board).permit(:title, :description).merge(user_id: current_user.id)
+  end
+
+  def set_board
+    @board = Board.find(params[:id])
   end
 end

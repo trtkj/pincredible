@@ -1,5 +1,5 @@
 .tiles#boards
-  - if @user == current_user
+  - if my_page?
     .tiles__item.big-tile
       .tiles__item__wrapper.hoverTrigger
         .item-object.modal-open{ data: { target: "modal-boardNew" } }
@@ -23,8 +23,8 @@
           .item-info--left
             .item-title #{board.title}
             .item-pin #{board.board_pins_count} ピン
-          - if @user == current_user
+          - if my_page?
             .item-info--right
               .item-edit.hidden.modal-open{ data: { target: "modal-boardEdit" + board.id.to_s } } 編集
-    - if @user == current_user
+    - if my_page?
       = render partial: "/shared/modal-boardEdit", locals: { board: board }

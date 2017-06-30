@@ -2,7 +2,7 @@
 .container
   .board-header
     .board-header__menu
-      -if user_signed_in? && current_user.id == @board.user_id
+      -if is_mine?(@board)
         .menu-button.modal-open{data: {target: "modal-boardEdit" + @board.id.to_s}}
           = fa_icon("pencil", class: "fa-lg menu-icon")
         .menu-button.releaseToggle
@@ -17,5 +17,5 @@
   = render partial: "/shared/pins"
   - if user_signed_in?
     = render partial: "/shared/post"
-    - if current_user == @board.user
+    - if is_mine?(@board)
       = render partial: "/shared/modal-boardEdit", locals: { board: @board }
