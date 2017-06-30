@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @board = Board.new
     @boards = @user.boards
-    @pins = @user.pins.order("created_at DESC").page(params[:page]).per(20)
+    @pins = @user.pins.order("created_at DESC").page(params[:page]).per(20).includes(:board_pins)
   end
 
   def edit

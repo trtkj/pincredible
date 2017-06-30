@@ -6,7 +6,7 @@
     .pin__menu
       - if user_signed_in?
         .menu--left
-          - if @pin.user == current_user
+          - if is_mine?(@pin)
             .menu-button.modal-open{data: {target: "modal-pinEdit"}}
               = fa_icon("pencil", class: "fa-lg menu-icon")
         .menu--right
@@ -25,17 +25,17 @@
     .pin__description
       = simple_format(@pin.description, class: "pin__description__text")
     .pin__date
-    - if @pin.board_pins.present?
+    - if @lBoard.present?
       .pin__board
         .pin-board--left
-          = link_to image_tag(@pin.board_pins.last.board.user.avatar.thumb, {class: "user-avatar"}), user_path(@pin.board_pins.last.board.user)
+          = link_to image_tag(@lBoard.user.avatar.thumb, {class: "user-avatar"}), user_path(@lBoard.user)
         .pin-board--right
           .board-event
-            = link_to @pin.board_pins.last.board.user.nickname, user_path(@pin.board_pins.last.board.user), class: "textCut400"
+            = link_to @lBoard.user.nickname, user_path(@lBoard.user), class: "textCut400"
             さんが「
-            = link_to @pin.board_pins.last.board.title, board_path(@pin.board_pins.last.board), class: "textCut400"
+            = link_to @lBoard.title, board_path(@lBoard), class: "textCut400"
             」に保存しました
 - if user_signed_in?
   = render partial: "shared/modal-saveToBoard"
-- if @pin.user == current_user
+- if is_mine?(@pin)
   = render partial: "shared/modal-pinEdit"

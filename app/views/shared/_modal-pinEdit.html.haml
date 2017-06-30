@@ -4,7 +4,7 @@
     .modal__window
       .modal__window--right
         .modal__window__header
-          - if current_user == @pin.user
+          - if is_mine?(@pin)
             .modal-title ピンを編集
           .close-button
             = fa_icon("times", class: "fa-lg")

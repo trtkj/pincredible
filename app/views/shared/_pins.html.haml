@@ -1,5 +1,5 @@
 = content_tag(:div, class: "tiles #{display}", id: "pins") do
-  - if @board.user == current_user && user_signed_in?
+  - if is_mine?(@board)
     .tiles__item.small-tile
       .tiles__item__wrapper.hoverTrigger.modal-open{data: {target: "modal-upload"}}
         .item-object
@@ -7,14 +7,14 @@
             = fa_icon("plus-circle", class: "fa-3x")
         .item-info
           .item-info__text ピンを保存する
-  - if controller_path == "boards" && action_name == "show"
+  - if board_show?
     - @board_pins.each do |board_pin|
       .tiles__item.small-tile
         .tiles__item__wrapper.hoverTrigger
           .item-object
             = link_to "", pin_path(board_pin.pin), class: "item-link zoom-in"
             = image_tag board_pin.pin.image.thumb, class: "item-object__img pin-img"
-            - if @board.user == current_user
+            - if is_mine?(@board)
               = link_to "解除", board_pin_path(board_pin), method: :delete , class: "button--gray releaseTrigger hidden"
           .item-info
             .item-info--left
@@ -25,14 +25,16 @@
           .item-description
             = simple_format(board_pin.pin.description, class: "pin-description")
         .tiles__item__user
-          = link_to "", board_path(board_pin.pin.board_pins.last.board), class: "item-user--link"
+          - lBoard = board_pin.pin.board_pins.last.board
+          = link_to "", board_path(lBoard), class: "item-user--link"
           .item-user--left
-            = image_tag board_pin.pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
+            = image_tag lBoard.user.avatar.thumb, class: "user-avatar"
           .item-user--right
-            .user-name #{board_pin.pin.board_pins.last.board.user.nickname}
-            .user-board #{board_pin.pin.board_pins.last.board.title}
+            .user-name #{lBoard.user.nickname}
+            .user-board #{lBoard.title}
   - else
     - @pins.each do |pin|
+      - lBoard = pin.board_pins.includes(:board).last.board if pin.board_pins.present?
       .tiles__item.small-tile
         .tiles__item__wrapper.hoverTrigger
           .item-object
@@ -46,16 +48,15 @@
               %span #{pin.board_pins_count}
           .item-description
             = simple_format(pin.description, class: "pin-description")
-        - if pin.board_pins.present?
+        - if lBoard.present?
           .tiles__item__user
-            = link_to "", board_path(pin.board_pins.last.board), class: "item-user--link"
+            = link_to "", board_path(lBoard), class: "item-user--link"
             .item-user--left
-              = image_tag pin.board_pins.last.board.user.avatar.thumb, class: "user-avatar"
+              = image_tag lBoard.user.avatar.thumb, class: "user-avatar"
             .item-user--right
-              .user-name #{pin.board_pins.last.board.user.nickname}
-              .user-board #{pin.board_pins.last.board.title}
-- if controller_path == "boards" && action_name == "show"
-- else
+              .user-name #{lBoard.user.nickname}
+              .user-board #{lBoard.title}
+- unless board_show?
   = paginate @pins
   .page-load-status
     .infinite-scroll-request.spinner

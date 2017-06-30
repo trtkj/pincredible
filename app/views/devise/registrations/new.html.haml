@@ -15,6 +15,11 @@
         = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードを再入力", class: "field-input"
         = f.submit "続行", class: "button--red wide"
       .notice アカウントを作成しても、Pincredibleの利用規約とプライバシーポリシーに同意するものとみなしません。
+    .form-area
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.email_field :email, value: "a@a", style: "display:none"
+        = f.password_field :password, value: "12345678", class: "field-input hidden", style: "display:none"
+        = f.submit "ゲストアカウントでログイン", class: "button--red wide"
   .footer
     %ul.footer__list
       %li.footer__list__item Pincredible について
