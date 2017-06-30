@@ -31,9 +31,7 @@ a {
     margin: 0 auto;
     background-color: white;
     &__item {
-      // width: 325px;
       margin: 4px 2px 20px;
-      // background-color: green;
       word-break: break-word;
       border-radius: 6px;
       position: relative;
@@ -45,9 +43,6 @@ a {
         .height236 {
           height: 236px;
         }
-        // .width236 {
-        //   width: 236px;
-        // }
         .item-object {
           margin: 0 8px 6px;
           .item-link {
@@ -81,17 +76,12 @@ a {
             height: 236px;
             width: 100%;
             position: relative;
-            // border: 1px solid $mono-color-white;
-            // box-shadow: 1px $mono-color-white inset;
-            // border-radius: 8px;
             .img{
               position: absolute;
-              // background-color: $mono-color-light;
               width: 50%;
               height: 118px;
               object-fit: cover;
               box-shadow: 1px 1px $mono-color-white inset;
-              // overflow: hidden;
               &--0 {
                 top: 0;
                 left: 0;
@@ -148,20 +138,9 @@ a {
           }
           &--left {
             flex: 1;
-            // .pin-title {
-            //   font-size: 14px;
-            //   font-weight: bold;
-            // }
           }
           &--right {
           }
-          // .pin-number {
-          //   font-size: 8.6px;
-          // }
-          // &__text {
-          //   font-size: 18px;
-          //   line-height: 36px;
-          // }
         }
         .item-description {
           margin: 0 8px 6px;
@@ -278,13 +257,40 @@ a {
 }
 .align-center {
   margin: 0 auto;
-  // text-align: center;
 }
 .toggleOn {
-  // background-color: $accent-color;
-  // color: white;
   background-color: $mono-color-dark;
 }
 .textCut180 {
   @include textCut(180px);
+}
+
+.spinner {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }

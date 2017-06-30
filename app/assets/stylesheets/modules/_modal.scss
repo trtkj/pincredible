@@ -68,15 +68,13 @@
     &__container {
       flex: 1;
       overflow: auto;
-      // width: 552px;
-      // margin: 0 auto;
-      // padding: 15px 24px;
       background-color: white;
 
       .message {
         font-size: 30px;
         text-align: center;
         line-height: 60px;
+        margin-top: 20px;
       }
       .content {
         padding: 15px 25px;
@@ -126,11 +124,6 @@
     }
     &__footer {
       padding: 10px 25px;
-      // font-size: 16px;
-      // font-weight: bold;
-      // align-items: center;
-      // padding: 25px 25px;
-      // border-top: 1px solid $mono-color-light;
       .fa-plus-circle {
         color: $accent-color;
         margin-left: 23px;
@@ -139,11 +132,9 @@
       .submit-button {
         @include textBtn();
         display: block;
-        // width: 100px;
         background-color: $accent-color;
         color: white;
         border: none;
-        // float: right;
         &:hover {
           cursor: pointer;
         }

@@ -54,3 +54,8 @@
             .item-user--right
               .user-name #{pin.board_pins.last.board.user.nickname}
               .user-board #{pin.board_pins.last.board.title}
+- if controller_path == "boards" && action_name == "show"
+- else
+  = paginate @pins
+  .page-load-status
+    .infinite-scroll-request.spinner

@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
   def index
     @board = Board.new
-    @pins = Pin.order("created_at DESC")
+    @pins = Pin.order("created_at DESC").page(params[:page]).per(20)
     respond_to do |format|
       format.html
       format.json {
