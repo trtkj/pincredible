@@ -1,0 +1,22 @@
+.modal#modal-pinsToBoard
+  .modal__bg
+  .modal__window{ id: "" }
+    .modal__window--left
+      .modal-image
+        %img.preview{ src: "" }
+    .modal__window--right
+      .modal__window__header
+        .modal-title ボードを選択
+        .close-button
+          = fa_icon("times", class: "fa-lg")
+      .modal__window__container
+        .content2
+          - current_user.boards.each do |board|
+            .board-item.saveToBoardTrigger{ id: "#{board.id}" }
+              - if board.pins.first().present?
+                = image_tag board.pins.last.image, class: "board-image"
+              - else
+                .board-image
+              .board-title.textCut180 #{board.title}
+              .board-button 保存
+      .modal__window__footer

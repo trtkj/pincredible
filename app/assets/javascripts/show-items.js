@@ -14,7 +14,7 @@ $(function(){
       transitionDuration: 0
     });
   }
-  
+
   // ユーザーページのボードとピンの表示切り替え
   $(".show-trigger__option").click(function(){
     var showId = $(this).attr("data-target")
@@ -44,15 +44,12 @@ $(function(){
     hideNav: '.pagination',
     status: '.page-load-status'
   });
-  $tilesM.on( 'append.infiniteScroll', function() {
-    $(".hoverTrigger").hover(function(){
-      $(this).parent().css('background-color', '#EFEFEF');
-      $(this).find(".no-img").css('background-color', '#CDCDCD');
-      $(this).find(".item-edit").removeClass("hidden");
-    }, function(){
-      $(this).parent().css('background-color', 'white');
-      $(this).find(".no-img").css('background-color', '#EFEFEF');
-      $(this).find(".item-edit").addClass("hidden");
-    });
-  });
+
+  // ログイン画面の背景
+  var scrollSpeed = 1;
+  var posX = 0;
+  setInterval(function(){
+    posX += scrollSpeed;
+    $(".container-signup").css("background-position" , posX + "px 50%")
+  } , 50);
 });
