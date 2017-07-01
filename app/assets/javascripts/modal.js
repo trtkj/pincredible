@@ -5,9 +5,8 @@ $(function() {
     $("#upload1").show();
     $("#upload2").hide();
     var target = $("#modal-saveSuccess").find(".content2");
-    var imgHtml = $('<img>').attr({src: pin_image_url, class: "preview"});
-    target.append(imgHtml);
-    target.append("「" + board_title + "」に保存しました!");
+    target.find(".preview").attr("src", pin_image_url)
+    target.find(".message-text").text("「" + board_title + "」に保存しました!");
     $("#modal-saveSuccess").show();
     $(".modal__bg, .close-button").click(function(){
       $("#modal-saveSuccess").hide();
@@ -33,10 +32,14 @@ $(function() {
     });
   }
 
-  $(".modal-open").click(function(){
+  $("body").on("click", ".modal-open", function(){
     $(".modal").hide();
     var modal = '#' + $(this).attr('data-target');
+    var pin_image = $(this).attr("data-image");
+    var pin_id = $(this).attr("data-id");
     $(modal).show();
+    $(modal).find(".modal__window").attr("id", pin_id);
+    $(modal).find(".preview").attr("src", pin_image);
     $(".modal__bg, .close-button").click(function(){
       var thisForm = $(this).parents("form")[0];
       if (thisForm) {
@@ -100,15 +103,31 @@ $(function() {
   });
 
   // アイテムhover時に背景をグレーに
-  $(".hoverTrigger").hover(function(){
-    $(this).parent().css('background-color', '#EFEFEF');
-    $(this).find(".no-img").css('background-color', '#CDCDCD');
-    $(this).find(".item-edit").removeClass("hidden");
-  }, function(){
-    $(this).parent().css('background-color', 'white');
-    $(this).find(".no-img").css('background-color', '#EFEFEF');
-    $(this).find(".item-edit").addClass("hidden");
-  });
+  $("body").on({
+    "mouseenter": function(){
+      $(this).parent().css('background-color', '#EFEFEF');
+      $(this).find(".no-img").css('background-color', '#CDCDCD');
+      $(this).find(".item-edit").removeClass("hidden");
+      $(this).find(".saveTrigger").removeClass("hidden");
+  },
+    "mouseleave": function(){
+      $(this).parent().css('background-color', 'white');
+      $(this).find(".no-img").css('background-color', '#EFEFEF');
+      $(this).find(".item-edit").addClass("hidden");
+      $(this).find(".saveTrigger").addClass("hidden");
+    }
+  }, ".hoverTrigger");
+  // $(".hoverTrigger").hover(function(){
+  //   $(this).parent().css('background-color', '#EFEFEF');
+  //   $(this).find(".no-img").css('background-color', '#CDCDCD');
+  //   $(this).find(".item-edit").removeClass("hidden");
+  //   $(this).find(".releaseTrigger").removeClass("hidden");
+  // }, function(){
+  //   $(this).parent().css('background-color', 'white');
+  //   $(this).find(".no-img").css('background-color', '#EFEFEF');
+  //   $(this).find(".item-edit").addClass("hidden");
+  //   $(this).find(".releaseTrigger").addClass("hidden");
+  // });
 
   // ボードページでピンを編集する
   $(".releaseToggle").click(function(){
