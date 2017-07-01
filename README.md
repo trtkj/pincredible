@@ -1,47 +1,48 @@
-# Database design
+Pincredible
+====
 
-## users table
-| column | type | option |
-| ---- | ---- | ---- |
-| nickname | string | null: false |
-| email | string | null: false, index: true, unique: true |
-| pass | string | null: false |
-| about | text |  |
-| avatar | string |  |
+Overview
+プログラミング学習のために、Pinterestを目コピしたWEBアプリです。
 
-#### Association
-- has_many :boards
-- has_many :pins
+## Description
+株式会社divによるプログラミング学習コース「TECH::EXPERT」のカリキュラムの一環として、既存サービスの目コピを行いました。
+本アプリはPinterestを目コピしたものです。
 
-## boards table
-| column | type | option |
-| ---- | ---- | ---- |
-| title | string | null: false |
-| user_id | integer | null: false |
-| description | text |  |
+主にバックエンド開発の学習を目的としているため、以下のような制約があります。
+- サポートするブラウザはChromeです
+- 初期データは外部サイトのスクレイピングとダミーデータにより生成されています
+- 利用規約、ヘルプなどリンクが存在しないものがあります
+- ユーザー機能は簡易的なものです。セキュリティは担保されません。
 
-#### Association
-- has_many :pins, through :boards_pins
-- belongs_to :user
+### 基本機能
+- ローカルの画像を投稿してピンを作成
+- ボードを作成してピンを保存
+- ユーザ機能（登録、ログイン）
+- インクリメンタルサーチ（ピン、ボード、ユーザ）
+- スクレイピング、Faker（ダミーデータ生成gem）によるダミーデータ投稿
 
-## pins table
-| column | type | option |
-| ---- | ---- | ---- |
-| title | string | null: false |
-| image | string | null :false |
-| user_id | integer | null: false |
-| description | text |  |
+### 追加オリジナル機能
+- （未実装）
 
-#### Association
-- belongs_to :user
-- has_many :boards, through :boards_pins
+## 開発環境
+- Ruby: v2.3.1
+- Rails: 5.0.3
+- Haml
+- SCSS
+- JavaScript
+- jQuery
+- 外部JSライブラリ
+  * Masonry（レンガ状に要素を配置）
+  * Infinite Scroll（要素の自動読み込み）
+  * imagesLoaded（画像読み込みを検知）
 
-## board_pins table
-| column | type | option |
-| ---- | ---- | ---- |
-| board_id | integer | null: false |
-| pin_id | integer | null: false |
 
-#### Association
-- belongs_to :board
-- belongs_to :pin
+## デプロイ環境
+http://13.112.83.191:3000/
+
+- サーバ: AWS EC2
+- 画像ストレージ: AWS S3
+- データベース: MySQL
+- WEBサーバ: Nginx
+- アプリケションサーバ: Unicorn
+
