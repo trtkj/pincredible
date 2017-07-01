@@ -2,6 +2,9 @@
   position: relative;
   background-color: gray;
   height: 100vh;
+  background-image: url(background.png);
+  background-size: cover;
+  background-position: 50% 50%;
   .right-top {
     position: absolute;
     top: 15px;
