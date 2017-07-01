@@ -1,7 +1,7 @@
 Pincredible
 ====
 
-Overview
+## Overview
 プログラミング学習のために、Pinterestを目コピしたWEBアプリです。
 
 ## Description
