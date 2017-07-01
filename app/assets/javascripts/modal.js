@@ -92,6 +92,7 @@ $(function() {
       saveToBoard(board_id, pin_id);
     })
     .fail(function(){
+      alert("ピンの作成に失敗しました");
     });
   });
 
@@ -117,17 +118,6 @@ $(function() {
       $(this).find(".saveTrigger").addClass("hidden");
     }
   }, ".hoverTrigger");
-  // $(".hoverTrigger").hover(function(){
-  //   $(this).parent().css('background-color', '#EFEFEF');
-  //   $(this).find(".no-img").css('background-color', '#CDCDCD');
-  //   $(this).find(".item-edit").removeClass("hidden");
-  //   $(this).find(".releaseTrigger").removeClass("hidden");
-  // }, function(){
-  //   $(this).parent().css('background-color', 'white');
-  //   $(this).find(".no-img").css('background-color', '#EFEFEF');
-  //   $(this).find(".item-edit").addClass("hidden");
-  //   $(this).find(".releaseTrigger").addClass("hidden");
-  // });
 
   // ボードページでピンを編集する
   $(".releaseToggle").click(function(){
