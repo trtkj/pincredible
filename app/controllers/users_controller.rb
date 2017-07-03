@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      render :edit
+      redirect_to({action: :edit}, flash: { errors: @user.errors.full_messages })
     end
   end
 
