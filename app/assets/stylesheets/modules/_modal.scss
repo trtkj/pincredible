@@ -35,8 +35,8 @@
     .preview {
       margin: auto;
       display: block;
-      width: 216px;
-      height: auto;
+      max-width: 216px;
+      max-height: 400px;
       border-radius: 8px;
     }
     &--left {
@@ -139,6 +139,21 @@
       }
     }
   }
+  &__message{
+    width: 600px;
+    border-radius: 8px;
+    background-color: white;
+    margin: auto;
+    padding: 15px;
+    position:absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    z-index: 15;
+    &__text {
+      text-align: center;
+    }
+  }
 }
 .container-overlay {
   width: 100%;
@@ -148,4 +163,16 @@
   left: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
+}
+
+.notice {
+  background-color: white;
+  color: $font-color-dark;
+}
+.alert {
+  background-color: $accent-color;
+  color: $font-color-white;
+}
+.shown {
+  display: block;
 }
