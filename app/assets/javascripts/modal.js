@@ -14,7 +14,6 @@ $(function() {
   }
 
   function saveToBoard(board_id, pin_id){
-    var selectBoardUrl = "/boards/" + board_id;
     $.ajax({
       type: "POST",
       url: "/board_pins",
@@ -25,7 +24,18 @@ $(function() {
       dataType: "json"
     })
     .done(function(data){
-      saveToBoardMsg(data.board_title, data.pin_image.url);
+      if (data.errors.length > 0) {
+        $(".modal").hide();
+        var message = $("#modal-message");
+        message.find(".modal__message").empty();
+        for(var i=0; i < data.errors.length; i++){
+          var textHtml = $("<div class = 'modal__message__text'>").text(data.errors[i].message);
+          message.find(".modal__message").append(textHtml);
+        }
+        message.show();
+      }else{
+        saveToBoardMsg(data.board_title, data.pin_image.url);
+      }
     })
     .fail(function(){
       alert("ボードへの登録に失敗しました");
@@ -40,15 +50,16 @@ $(function() {
     $(modal).show();
     $(modal).find(".modal__window").attr("id", pin_id);
     $(modal).find(".preview").attr("src", pin_image);
-    $(".modal__bg, .close-button").click(function(){
-      var thisForm = $(this).parents("form")[0];
-      if (thisForm) {
-        thisForm.reset();
-      };
-      $(modal).hide();
-      $("#upload1").show();
-      $("#upload2").hide();
-    });
+  });
+
+  $("body").on("click", ".modal__bg, .close-button", function(){
+    var thisForm = $(this).parents("form")[0];
+    if (thisForm) {
+      thisForm.reset();
+    };
+    $(".modal").hide();
+    $("#upload1").show();
+    $("#upload2").hide();
   });
 
   // 画像アップロード時のプレビュー表示
@@ -88,8 +99,19 @@ $(function() {
       dataType: "json"
     })
     .done(function(data){
-      var pin_id = data.pin_id;
-      saveToBoard(board_id, pin_id);
+      if (data.errors.length > 0) {
+        $(".modal").hide();
+        var message = $("#modal-message");
+        message.find(".modal__message").empty();
+        for(var i=0; i < data.errors.length; i++){
+          var textHtml = $("<div class = 'modal__message__text'>").text(data.errors[i].message);
+          message.find(".modal__message").append(textHtml);
+        }
+        message.show();
+      }else{
+        var pin_id = data.pin_id;
+        saveToBoard(board_id, pin_id);
+      }
     })
     .fail(function(){
       alert("ピンの作成に失敗しました");
