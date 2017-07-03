@@ -14,4 +14,5 @@
             = f.label :description, "ボードの説明", class: "field-label"
             = f.text_area :description, class: "field-input"
         .modal__window__footer
+          = link_to "解除", board_path(board), method: :delete , class: "button--gray left"
           = f.submit "Save", class: "submit-button right"
