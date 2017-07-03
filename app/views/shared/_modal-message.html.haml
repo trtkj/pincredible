@@ -1,0 +1,21 @@
+.modal#modal-message
+  .modal__bg
+  .modal__message.alert
+    .modal__message__text
+- if flash[:errors].present?
+  .modal.shown
+    .modal__bg
+    .modal__message.alert
+      - flash[:errors].each do |message|
+        .modal__message__text #{message}
+- if alert
+  .modal.shown
+    .modal__bg
+    .modal__message.notice
+      .modal__message__text #{alert}
+- if notice
+  .modal.shown
+    .modal__bg
+    .modal__message.notice
+      .modal__message__text #{notice}
+
