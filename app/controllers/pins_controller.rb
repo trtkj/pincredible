@@ -12,15 +12,16 @@ class PinsController < ApplicationController
   end
 
   def create
-    @pin = Pin.new(pin_params)
-    if @pin.save
-    else
-    end
+    @pin = Pin.create(pin_params)
   end
 
   def update
-    @pin.update(pin_params)
-    redirect_to @pin
+    @pin = Pin.find(params[:id])
+    if @pin.update(pin_params)
+      redirect_to @pin
+    else
+      redirect_to(@pin, flash: { errors: @pin.errors.full_messages })
+    end
   end
 
   def show

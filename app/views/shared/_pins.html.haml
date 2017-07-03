@@ -15,7 +15,7 @@
             = link_to "", pin_path(board_pin.pin), class: "item-link zoom-in"
             = image_tag board_pin.pin.image.thumb, class: "item-object__img pin-img"
             - if user_signed_in?
-              .button.modal-open.saveTrigger.button--red.hidden{ data: { target: "modal-pinsToBoard", id: board_pin.id, image: board_pin.pin.image.thumb } } 保存
+              .button.modal-open.saveTrigger.button--red.hidden{ data: { target: "modal-pinsToBoard", id: board_pin.pin.id, image: board_pin.pin.image.thumb } } 保存
             - if is_mine?(@board)
               = link_to "解除", board_pin_path(board_pin), method: :delete , class: "button--gray releaseTrigger hidden"
           .item-info
