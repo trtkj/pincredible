@@ -23,7 +23,7 @@
         .user-label 作成したユーザー：
         = link_to "#{@pin.user.nickname}", user_path(@pin.user), class: "user-name link-text"
     .pin__description
-      = simple_format(@pin.description, class: "pin__description__text")
+      = simple_format(tag2link(@pin.description), class: "pin__description__text")
     .pin__date
     - if @lBoard.present?
       .pin__board
