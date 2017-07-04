@@ -1,0 +1,8 @@
+= render partial: "/shared/header"
+.container
+  .tag-header
+    .tag-header__info
+      %h2.title-text ##{@tag.name} のタグが付いたピン
+  = render partial: "/shared/pins"
+  - if user_signed_in?
+    = render partial: "/shared/post"
