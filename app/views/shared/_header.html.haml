@@ -10,6 +10,9 @@
   .header__menu
     - if user_signed_in?
       .icon-button
+        = link_to "", "/tags", class: "menu-link"
+        = fa_icon("hashtag", class: "fa-lg menu-icon")
+      .icon-button
         = link_to "", "/users/#{current_user.id}", class: "menu-link"
         = fa_icon("user", class: "fa-2x menu-icon")
     - else
@@ -24,3 +27,5 @@
     .result__label ユーザー
   .result#result-boards
     .result__label ボード
+  .result#result-tags
+    .result__label タグ
