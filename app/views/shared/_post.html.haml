@@ -1,6 +1,8 @@
 .post
   .post__button.modal-open{ data: { target: "modal-upload" } }
     = fa_icon("plus")
+  .post__button.modal-open{ data: { target: "modal-help" } }
+    = fa_icon("question")
 .modal#modal-upload
   = form_for @newPin, html: { class: "newPinForm" } do |f|
     .modal__bg
@@ -38,3 +40,22 @@
                 .board-title.textCut180 #{board.title}
                 .board-button 保存
         .modal__window__footer
+.modal#modal-help
+  .modal__bg
+  .modal__window
+    .modal__window--right
+      .modal__window__header
+        .modal-title ヘルプ
+        .close-button
+          = fa_icon("times", class: "fa-lg")
+      .modal__window__container
+        .content
+          %span.help-header >>このサイトについて
+          %p.help-text このサイトはプログラミング学習用に作成したもので、サービスとして提供するものではありません。表示されているコンテンツは、他のサイトからスクレイピングしたもの、ダミーデータ生成ライブラリによるもの、訪問した人が投稿したものが含まれます。
+          %span.help-header >>機能
+          %p.help-text ○ユーザー機能：ユーザーアカウントの登録、ログインが可能です。アカウント登録せずにゲストアカウントで試用することができます。ログインすると、以下のピン機能、ボード機能が使えます。
+          %p.help-text ○ピン機能：ローカルの画像を投稿することができます。作成したピンを削除することはできません。
+          %p.help-text ○ボード機能：ボードを作成して、お気に入りのピンをまとめることができます。
+          %p.help-text ○ハッシュタグ機能：ピンの説明欄に#（半角のハッシュ記号）から始まる文字列を入力すると、タグとして機能します。タグをクリックすると、そのタグが付いたピンの一覧を確認できるページに遷移します。ヘッダの＃アイコンからタグの一覧（タグクラウド）を確認できます。
+          %p.help-text ○検索機能：ヘッダの検索欄にテキストを入力すると、一致するピン、ユーザー、ボード、タグをそれぞれ最大5つ表示します。
+      .modal__window__footer
