@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626102513) do
+ActiveRecord::Schema.define(version: 20170704050358) do
 
   create_table "board_pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "board_id",   null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20170626102513) do
     t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
 
+  create_table "pin_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "pin_id",     null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pin_id"], name: "index_pin_tags_on_pin_id", using: :btree
+    t.index ["tag_id"], name: "index_pin_tags_on_tag_id", using: :btree
+  end
+
   create_table "pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                                      null: false
     t.string   "image"
@@ -40,6 +49,14 @@ ActiveRecord::Schema.define(version: 20170626102513) do
     t.datetime "updated_at",                                 null: false
     t.integer  "board_pins_count",               default: 0
     t.index ["user_id"], name: "index_pins_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "pin_tags_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

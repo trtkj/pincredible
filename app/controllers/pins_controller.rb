@@ -13,11 +13,13 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.create(pin_params)
+    extract_tags(@pin)
   end
 
   def update
     @pin = Pin.find(params[:id])
     if @pin.update(pin_params)
+      @pin.extract_tags
       redirect_to @pin
     else
       redirect_to(@pin, flash: { errors: @pin.errors.full_messages })
@@ -40,4 +42,5 @@ class PinsController < ApplicationController
   def set_pin
     @pin = Pin.find(params[:id])
   end
+
 end

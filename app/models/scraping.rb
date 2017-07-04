@@ -32,4 +32,19 @@ class Scraping
       end
     end
   end
+
+
+  def self.generate_dummy_tags
+    tags = ["interior", "design", "textile", "graphic", "architecture", "photography", "beauty", "cars", "celebs", "entertainment", "history", "holiday", "illustrations", "outdoors", "science", "sports", "tattoos", "weddings", "geek", "humor", "art", "home", "gardens", "quotes", "DIY", "travel", "food", "kids", "tech", "animals", "health", "education"]
+    Pin.find_each do |pin|
+      times = rand(3) + 2
+      addTags = ""
+      for i in 0..times do
+        addTags << "#" + tags.sample + " "
+      end
+      pin.description << addTags
+      pin.save
+      pin.extract_tags
+    end
+  end
 end

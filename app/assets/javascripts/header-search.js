@@ -71,9 +71,11 @@ $(function(){
         var pins = "pins"
         var users = "users"
         var boards = "boards"
+        var tags = "tags"
         incrementalSearch(pins, input);
         incrementalSearch(users, input);
         incrementalSearch(boards, input);
+        incrementalSearch(tags, input);
       }
       preInput = input;
     });
