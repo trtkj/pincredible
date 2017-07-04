@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :boards, only: [:index, :show, :create, :update, :destroy]
   resources :pins, only: [:index, :create, :update, :show, :destroy]
   resources :board_pins, only: [:create, :destroy]
+  resources :tags, only: [:index, :show, :create]
 end
