@@ -8,10 +8,10 @@
         %input{type: "text", placeholder: "検索", class: "search-input field-input"}
         = fa_icon("search", class: "fa-lg search-icon")
   .header__menu
+    .icon-button
+      = link_to "", "/tags", class: "menu-link"
+      = fa_icon("hashtag", class: "fa-lg menu-icon")
     - if user_signed_in?
-      .icon-button
-        = link_to "", "/tags", class: "menu-link"
-        = fa_icon("hashtag", class: "fa-lg menu-icon")
       .icon-button
         = link_to "", "/users/#{current_user.id}", class: "menu-link"
         = fa_icon("user", class: "fa-2x menu-icon")

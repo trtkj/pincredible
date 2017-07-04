@@ -57,6 +57,7 @@
   }
   &__menu {
     display: flex;
+    align-items: center;
     .icon-button {
       @include iconBtn(48px);
     }
