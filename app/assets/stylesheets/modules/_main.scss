@@ -6,7 +6,7 @@ body {
 }
 a {
   &:link, &:visited, &:hover, &:active {
-    color: $font-color-dark;
+    color: $font-color-middle;
     text-decoration: none;
   }
 }
@@ -204,6 +204,7 @@ a {
     position: fixed;
     right: 14px;
     bottom: 34px;
+    z-index: 3;
     &__button {
       width: 40px;
       height: 40px;

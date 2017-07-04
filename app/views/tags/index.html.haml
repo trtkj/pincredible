@@ -1,0 +1,8 @@
+= render partial: "/shared/header"
+.container
+  .tag-header
+    .tag-header__info
+      %h2.title-text タグからピンを探す
+  .tag-cloud
+    - @tags.each do |tag|
+      = link_to "##{tag.name}", tag, class: "tag-cloud__item", data: { tagNum: tag.pin_tags_count }
