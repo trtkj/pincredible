@@ -15,7 +15,9 @@ module ApplicationHelper
     newText = String.new(text)
     text.scan(/#([^(\s|#)]+)\s?/){ |matched|
       tag = Tag.find_by(name: matched)
-      newText.gsub!("#" + matched[0], "<a class = 'tag-link' href = '/tags/#{tag.id}'>##{tag.name}</a> ")
+      if tag.present?
+        newText.gsub!("#" + matched[0], "<a class = 'tag-link' href = '/tags/#{tag.id}'>##{tag.name}</a> ")
+      end
     }
     return newText;
   end

@@ -13,7 +13,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.create(pin_params)
-    extract_tags(@pin)
+    @pin.extract_tags
   end
 
   def update
